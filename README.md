@@ -15,7 +15,7 @@ Approach two
 
 
 ## Others
-1. Find min element 
+1. Find mid element 
 
 ```
 mid = l + (r-l)/2

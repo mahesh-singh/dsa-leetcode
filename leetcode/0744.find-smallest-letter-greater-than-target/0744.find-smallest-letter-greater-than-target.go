@@ -10,7 +10,7 @@ func nextGreatestLetter(letters []byte, target byte) byte {
 		mid := l + (r-l)/2
 
 		if letters[mid] == target {
-			if mid > len(letters) {
+			if mid > len(letters) { // Missing edge case
 				return letters[mid+1]
 			}
 		}

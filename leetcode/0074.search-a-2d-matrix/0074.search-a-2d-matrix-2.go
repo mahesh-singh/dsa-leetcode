@@ -19,7 +19,7 @@ func searchMatrix(matrix [][]int, target int) bool {
 		}
 	}
 
-	if top > bot {
+	if top > bot { //Missing edge case
 		return false
 	}
 

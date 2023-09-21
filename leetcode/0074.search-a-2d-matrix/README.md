@@ -58,8 +58,4 @@ Complexity  = log(m) + log(n)
 
 
 
-Approach #3
-Alternative to above approach: convert matrix into array and vise versa 
 
-A n * m matrix converted into an array: matrix[x][y] : a[x * m + y]
-An array can be converted into n * m matrix: a[x] : matrix[x / m][x % m]

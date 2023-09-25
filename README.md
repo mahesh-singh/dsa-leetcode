@@ -31,7 +31,7 @@ Approach #1
 3. maxLength to track the max length
 4. loop `r<len(s)`
 5. if s[r] not exist in map, take max maxLength and r-l+1
-6. else (its seen ), change the `l` to seen index +1
+6. else (its seen ), and seen index is `>=l` change the `l` to seen index +1
 7. add char and index into map
 
 

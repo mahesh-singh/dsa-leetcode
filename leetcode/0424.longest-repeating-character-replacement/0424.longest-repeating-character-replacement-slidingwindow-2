@@ -1,0 +1,38 @@
+func characterReplacement(s string, k int) int {
+ if len(s) == 0 {
+		return 0
+	}
+	frqMap := make(map[byte]int)
+	maxLen := 0
+    l:=0
+    r:=0
+    for r<len(s) {
+        if frqVal, ok := frqMap[s[r]]; ok {
+            frqMap[s[r]] = frqVal + 1
+        } else {
+            frqMap[s[r]] = 1
+        }
+        frqCharCount := mostFrqCharCount(frqMap)
+        currLen := r - l + 1
+        if currLen-frqCharCount <= k {
+            if currLen > maxLen {
+                maxLen = currLen
+            }
+        } else {
+            frqMap[s[l]] = frqMap[s[l]] - 1
+            l = l + 1
+        }
+        r = r + 1
+    }
+	return maxLen   
+}
+
+func mostFrqCharCount(m map[byte]int) int {
+	maxCount := 0
+	for _, frq := range m {
+		if frq > maxCount {
+			maxCount = frq
+		}
+	}
+	return maxCount
+}

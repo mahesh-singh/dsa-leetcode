@@ -1,3 +1,37 @@
+### Big O
+Big O - worst case 
+Clasification  - 3:41
+
+### Dynamic array
+
+### Linked list 
+
+#### Complexity
+- Search
+  - Singly O(n)
+  - Doubly O(n)
+- Insert at head
+  - Singly O(1)
+  - Doubly O(1)
+- Insert at tail
+  - Singly O(1) 
+  - Doubly O(1) 
+- Remove at head
+  - Singly O(1)
+  - Doubly O(1)
+- Remove at tail
+  - Singly O(n) : because need to find new tail
+  - Doubly O(1) : because tail have previous pointer which will become the new tail
+- Remove at middle
+  - Singly O(n) 
+  - Doubly O(n) 
+ 
+ #### Linked list traversal
+1. while 
+2. recursive 
+
+#### Linked list Tortoise and Hare 
+
 
 ### Time complexity 
 1. `for i=0; i<n; i++` O(n)

@@ -1,5 +1,54 @@
 # DSA, Leetcode in Golang
 
+
+### 143. Reorder List
+1. Find middle by using slow and fast pointer. Slow.next will be the head of second list
+2. Store Slow.next  and **set slow.next to null** to split the fist and second list
+3. Reverse the second list, **prev pointer become the new head** 
+4. merge these two list until second list become null because in case of odd length, second list become shorter
+   1. to merge, first store the next node of fist and second in temp
+   2. set fist.next to second
+   3. second.next to temp1
+   4. move the fist and second list by setting with temp
+
+
+### 141. Linked List Cycle
+
+Approach #1: Brute force
+1. Use hash table and store address of the node/value as a key
+2. if found again, its cyclic 
+
+
+Approach #2 : slow and fast pointer
+1. Take a two pointer `slow`,  `fast` and set to list 
+2. loop through until list.next == null && slow and fast pointer is null
+   1. move `slow` to next list item and `fast` to next of next
+   2. compare the `slow` and  `fast`, if equal, return true
+3. return false 
+
+
+### 21. Merge Two Sorted Lists
+
+Approach #1
+1. Take a dummy list with tail //trick
+2. Loop both the list until one of them reach to null
+3. Compare the value and the smaller one should be added in the tail
+4. Once loop end, check the not null list and append on the tail
+5. return dummy.next //trick 
+
+
+### 206. Reverse Linked List
+
+Approach #1 : iterative 
+1. have three pointers, prev, curr and next 
+2. loop through until curr.next == null
+   1. set next = curr.next //otherwise you will lose the next ref
+   2. set curr.next = prev
+   3. set prev = curr
+   4. set curr = next
+   
+
+
 ### 424. Longest Repeating Character Replacement
 
 Approach #1

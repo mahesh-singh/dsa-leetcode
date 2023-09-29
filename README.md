@@ -1,5 +1,19 @@
 # DSA, Leetcode in Golang
 
+### 9. Remove Nth Node From End of List
+
+Approach #1: reverse, delete, reverse
+1. Reverse the lined list
+2. Reach to the node just before that, and use tmp variable to store the next.next node
+3. set node.next to tmp variable 
+
+Approach #2: Two pointer 
+1. Take a dummy node and add list to that (or use the prev pointer, start will null)
+2. First pointer at dummy node, second pointer at n distance further, means n+1 node. means offset between these pointer must be equal to n
+3. Move both the pointers one step at a time
+4. Once second, pointer reach to the null, it means first pointer is just before the node which need to be removed 
+5. remove the node by storing the tmp variable  
+
 
 ### 143. Reorder List
 1. Find middle by using slow and fast pointer. Slow.next will be the head of second list
@@ -43,7 +57,7 @@ Approach #1
 
 Mistakes
 1. Not using tail, this make dummy list reach to last node so not sure how to return the new list
-2.  
+2. `dummy := &ListNode{Val: -1, Next: nil}` 
 
 
 
@@ -56,7 +70,9 @@ Approach #1 : iterative
    2. set curr.next = prev
    3. set prev = curr
    4. set curr = next
-   
+
+Mistake 
+1. `var prev *ListNode = nil`   
 
 
 ### 424. Longest Repeating Character Replacement

@@ -30,18 +30,25 @@ Approach #2 : slow and fast pointer
 ### 21. Merge Two Sorted Lists
 
 Approach #1
-1. Take a dummy list with tail //trick
-2. Loop both the list until one of them reach to null
-3. Compare the value and the smaller one should be added in the tail
-4. Once loop end, check the not null list and append on the tail
-5. return dummy.next //trick 
+1. Note: list is sorted, unequal list
+2. Take a dummy list with {Val:-1, Next: null}. 
+3. Assign it to tail //trick, this will help in moving tail in the loop
+4. Loop both the list until one of them reach to null
+5. Compare the value and the smaller one should be added in the tail and tail need to move to next
+6. Once loop end, check the not null list and append on the tail
+7. return dummy.next //trick: not tail as tail now point to last node
+
+Mistakes
+1. Not using tail, this make dummy list reach to last node so not sure how to return the new list
+2.  
+
 
 
 ### 206. Reverse Linked List
 
 Approach #1 : iterative 
 1. have three pointers, prev, curr and next 
-2. loop through until curr.next == null
+2. loop through until curr == null // `making mistake of curr.next == null while coding`
    1. set next = curr.next //otherwise you will lose the next ref
    2. set curr.next = prev
    3. set prev = curr

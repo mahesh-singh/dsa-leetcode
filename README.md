@@ -21,10 +21,13 @@ Approach #1: Brute force
 
 Approach #2 : slow and fast pointer
 1. Take a two pointer `slow`,  `fast` and set to list 
-2. loop through until list.next == null && slow and fast pointer is null
+2. loop through until list == null && slow and fast pointer is null
    1. move `slow` to next list item and `fast` to next of next
    2. compare the `slow` and  `fast`, if equal, return true
 3. return false 
+
+Mistake 
+1. Making mistake by not checking slowPointer.Next != nil && fastPointer.Next != nil && fastPointer.Next.Next != nil
 
 
 ### 21. Merge Two Sorted Lists

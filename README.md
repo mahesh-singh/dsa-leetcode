@@ -9,11 +9,13 @@ Approach #1: reverse, delete, reverse
 
 Approach #2: Two pointer 
 1. Take a dummy node and add list to that (or use the prev pointer, start will null)
-2. First pointer at dummy node, second pointer at n distance further, means n+1 node. means offset between these pointer must be equal to n
+2. First pointer at dummy node, second pointer at n distance further from **head** (not form dummy node) , means n+1 node. means offset between these pointer must be equal to n
 3. Move both the pointers one step at a time
 4. Once second, pointer reach to the null, it means first pointer is just before the node which need to be removed 
-5. remove the node by storing the tmp variable  
+5. remove the node by setting   
 
+Mistake
+1. Not assigning dummy.next to head. Confused with merged two list where dummy list start with dummy.next= null as add item one by one.
 
 ### 143. Reorder List
 1. Find middle by using slow and fast pointer. Slow.next will be the head of second list

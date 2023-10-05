@@ -104,21 +104,11 @@ Approach #1
 ### 3. Longest Substring Without Repeating Characters
 Approach #1
 1. l & r to track the window, set l = 0 , r = 0, run the while loop `r < len(s)`
-2. map to track the repeating chars, key=char, value=index
-3. maxLength to track the max length
-4. loop `r<len(s)`
-5. if s[r] not exist in map, take max maxLength and r-l+1
-6. else (its seen ), and seen index is `>=l` change the `l` to seen index +1
-7. add char and index into map
-
-
-Mistake
-Approach #1
-1. map to track the repeated char, maxLength to track the max length
-2. loop though the array, for each char 
-3. if char exists in the map, it means repeating, clear the map, store current char // mistake as it not tracking the index of chars and it will not calculate length correctly  
-4. If char not exists in the map, add char in the map, take max of maxLength and len of map
-5. return the maxLength
+2. map to track chars index, key=char, value=index & maxLength to track the max length
+3. loop `r<len(s)`
+   1. if s[r] not exist in map, take max of maxLength and r-l+1
+   2. else (its seen ), and seen index pos is `>=l` (it means seen already outside of current window on the left side)  change the `l` to seen-index +1 
+   3. update char index to `r`
 
 ### 33. Search in Rotated Sorted Array
 

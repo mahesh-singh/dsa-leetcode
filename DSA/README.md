@@ -47,7 +47,7 @@ Watch till 1.11
 1. Binary tree have at most two children
 2. Binary search tree: Left sub tree has smaller and right sub tree have larger elements
 3. examples 
-
+```
      5
     / \
   9     8
@@ -55,9 +55,12 @@ Watch till 1.11
 1      7  10
       /\
     6   9
+
+```
 Above tree is *not a BST* as 9 is in the left subtree of 8
 -------
 
+```
     1
       \
       20
@@ -72,4 +75,5 @@ Above tree is *not a BST* as 9 is in the left subtree of 8
         /
       17
 
+```
 Above tree is BST as each node's right sub tree have larger element and left have smaller element 

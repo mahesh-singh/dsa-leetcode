@@ -180,6 +180,10 @@ Mistake
 mid = l + (r-l)/2
 ```
 
-- Sliding window 
+### Sliding window 
   - Fixed window : sub array or sub string and find sum or length as a max or min 
   - Dynamic window : given condition min diff, max diff, sum, length etc, but find the sub array or sub string 
+
+### Sliding window vs two pointer 
+- Two pointer usually compare two values at the two pointers instead of all the element between the pointers
+- Sliding window for sub-array, two pointers a way to process pairs  

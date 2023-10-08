@@ -42,3 +42,34 @@ Clasification  - 3:41
 6. `for i=0; i<n; i=i/2` O(log n) base 2
 
 Watch till 1.11
+
+### Binary Tree & Binary Search tree
+1. Binary tree have at most two children
+2. Binary search tree: Left sub tree has smaller and right sub tree have larger elements
+3. examples 
+
+     5
+    / \
+  9     8
+/       /\
+1      7  10
+      /\
+    6   9
+Above tree is *not a BST* as 9 is in the left subtree of 8
+-------
+
+    1
+      \
+      20
+      /
+    19
+    /
+  2
+    \
+      3
+        \
+          18
+        /
+      17
+
+Above tree is BST as each node's right sub tree have larger element and left have smaller element 

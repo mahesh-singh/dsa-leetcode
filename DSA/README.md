@@ -57,7 +57,9 @@ Watch till 1.11
     6   9
 
 ```
+
 Above tree is *not a BST* as 9 is in the left subtree of 8
+
 -------
 
 ```

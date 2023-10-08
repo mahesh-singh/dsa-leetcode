@@ -17,6 +17,8 @@ Approach #2: Two pointer
 Mistake
 1. Not assigning dummy.next to head. Confused with merged two list where dummy list start with dummy.next= null as add item one by one.
 
+----
+
 ### 143. Reorder List
 1. Find middle by using slow and fast pointer. Slow.next will be the head of second list
 2. Store Slow.next  and **set slow.next to null** to split the fist and second list
@@ -27,6 +29,7 @@ Mistake
    3. second.next to temp1
    4. move the fist and second list by setting with temp
 
+----
 
 ### 141. Linked List Cycle
 
@@ -46,6 +49,8 @@ Mistake
 1. Making mistake by not checking slowPointer.Next != nil && fastPointer.Next != nil && fastPointer.Next.Next != nil
 
 
+----
+
 ### 21. Merge Two Sorted Lists
 
 Approach #1
@@ -61,7 +66,7 @@ Mistakes
 1. Not using tail, this make dummy list reach to last node so not sure how to return the new list
 2. `dummy := &ListNode{Val: -1, Next: nil}` 
 
-
+-----
 
 ### 206. Reverse Linked List
 
@@ -76,6 +81,7 @@ Approach #1 : iterative
 Mistake 
 1. `var prev *ListNode = nil`   
 
+----
 
 ### 424. Longest Repeating Character Replacement
 
@@ -83,13 +89,15 @@ Approach #1
 1. Given an string, sub string need to find of dynamic length - sliding window
 2. l,r = 0, map to track the frequency of the english chars, maxLength to track the max length
 3. add char in map or if already exist, increment the count, increase the maxLength
-4. find the max frequency char from map and apply following formula  `maxlength - maxFrequency <= k`
+4. find the max frequency char from map and apply following formula  `maxlength - maxFrequency <= k` (*it is not same as `maxlength - maxFrequency -k < 0`. It will lead to *)
 5. if `maxlength - maxFrequency <= k` is true, keep repeating above steps
 6. if false, reduce the frequency of s[l], move l = l+1  
 
 Approach #2
 1. Using binary search
 
+
+-----
 
 ### 121. Best Time to Buy and Sell Stock
 
@@ -101,6 +109,8 @@ Approach #1
 5. `r = r+1`
 
 
+------
+
 ### 3. Longest Substring Without Repeating Characters
 Approach #1
 1. l & r to track the window, set l = 0 , r = 0, run the while loop `r < len(s)`
@@ -109,6 +119,8 @@ Approach #1
    1. if s[r] not exist in map, take max of maxLength and r-l+1
    2. else (its seen ), and seen index pos is `>=l` (it means seen already outside of current window on the left side)  change the `l` to seen-index +1 
    3. update char index to `r`
+
+----
 
 ### 33. Search in Rotated Sorted Array
 
@@ -127,6 +139,7 @@ Mistakes
 1. miss the `target` condition 
 2. miss the loop will break and need to check with `nums[l]`
 
+-----
 
 ### 75. Search a 2D Matrix
 
@@ -163,6 +176,8 @@ Alternative to above approach: convert matrix into array and vise versa
 A n * m matrix converted into an array: matrix[x][y] : a[x * m + y]
 An array can be converted into n * m matrix: a[x] : matrix[x / m][x % m]
 
+------
+
 ### 0744 Find Smallest Letter Greater Than Target
 
 1. Assume first element is smallest greater then target
@@ -173,6 +188,7 @@ An array can be converted into n * m matrix: a[x] : matrix[x / m][x % m]
 Mistake
 1. missing the edge case when `mid` reached to end of the array
 
+-----
 ## Others
 -  Find mid element 
 
@@ -180,10 +196,13 @@ Mistake
 mid = l + (r-l)/2
 ```
 
+----
+
 ### Sliding window 
   - Fixed window : sub array or sub string and find sum or length as a max or min 
   - Dynamic window : given condition min diff, max diff, sum, length etc, but find the sub array or sub string 
 
+----
 ### Sliding window vs two pointer 
 - Two pointer usually compare two values at the two pointers instead of all the element between the pointers
 - Sliding window for sub-array, two pointers a way to process pairs  

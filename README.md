@@ -162,8 +162,9 @@ Approach #2
 1. Binary search on rows to find probable row index  
 2.  if `target` > mid row last element; change change the top
 3.  if `target` < mid row fist element; change the bottom
-4.  Otherwise you are on the probable row; break the loop   
-5. Binary search on the the elements of the row
+4.  Otherwise you are on the probable row; break the loop  
+5.  if `top > bottom` means, not found. (if value greater-then last element of the 2D array or less-then fist element of the array)  
+6. Binary search on the the elements of the row
 
 Complexity  = log(m) + log(n) 
 

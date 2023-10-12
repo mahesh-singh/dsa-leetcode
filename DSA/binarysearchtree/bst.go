@@ -87,21 +87,6 @@ func nodetostring(node *Node, str *strings.Builder) {
 	nodetostring(node.RightNode, str)
 }
 
-/*
-func contains(node *Node, val int) bool {
-	if node == nil {
-		return false
-	}
-	if node.Value > val {
-		return contains(node.LeftNode, val)
-	} else if node.Value < val {
-		return contains(node.RightNode, val)
-	} else {
-		//found the value
-		return true
-	}
-}*/
-
 func main() {
 	root := &Node{Value: 2, LeftNode: nil, RightNode: nil}
 	root.LeftNode = &Node{Value: 1, LeftNode: nil, RightNode: nil}

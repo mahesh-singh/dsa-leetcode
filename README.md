@@ -1,5 +1,17 @@
 # DSA, Leetcode in Golang
 
+### 226. Invert Binary Tree
+
+Approach #1
+1. Check the exit case if root == nil
+2. Store the root's right on the temp
+3. set right = left and left = temp
+4. run above recursive for root.right and root.left 
+
+----
+
+
+
 ### 9. Remove Nth Node From End of List
 
 Approach #1: reverse, delete, reverse

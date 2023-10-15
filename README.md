@@ -1,5 +1,36 @@
 # DSA, Leetcode in Golang
 
+
+### 104. Maximum Depth of Binary Tree
+
+Approach #1 Recursive DFS
+1. Base exit case if root is nil, return 0 as a height
+2. Start from root, calculate the heigh of left sub-tree and the right sub-tree 
+3. take the max of heights and add 1
+4. repeat the process 
+
+Approach #2 Iterative BFS
+
+1. Use queue, add root, sel level 0
+2. Iterative till len(queue) > 0
+   1. Iterative for len of the current queue -  *trick, store len in tmp variable and run loop till the tmp len* 
+      1. deque from top, if left node is not null, add in the queue and same for right node 
+   2. increase the level
+3. return the level
+
+
+Approach #3 Iterative BFS using stack
+1. Use stack, add root
+2. use map to maintain the level, add key as root and value a level =1
+3. take maxLevel = 1
+4. Iterative till len(stack) >0
+   1. pop all the top node from stack 
+   2. Get the level of the node for map
+      1. if pop-node.left != nil add into the stack and map with level+1
+      2. if pop-node.right != nil add into the stack and map with level+1
+   3. check id level > maxLevel, set maxLevel = level
+5. return maxLevel
+
 ### 226. Invert Binary Tree
 
 Approach #1

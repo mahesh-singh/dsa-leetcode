@@ -1,7 +1,29 @@
 # DSA, Leetcode in Golang
 
 
-### 100. Balance of Binary Tree
+### 572. Subtree of Another Tree
+
+Approach #1: Recursive DFS
+1. if tree and sub-tree is null, return true
+2. if one of the them is null, return false
+3. Use the #100 Same tree function 
+4. if root and sub-root value is equal
+   1. call isSame function
+5. Else
+   1. return isSubTree(root.left, subtree) OR isSubTree(root.left, subtree)  // if one of the true, we are good
+   
+
+
+### 100. Same Tree
+
+Approach #1: Recursive DFS
+1. if both the root are null return true
+2. if one of the root is null return false
+3. base case p.root.val == q.root.val
+   1. return isSame(left of p & q) && isSame(right of p & q)  //both side need to be true
+
+
+### 110. Balance of Binary Tree
 
 Approach #1: Recursive DFS
 1. Find depth/heigh of left and right sub tree 

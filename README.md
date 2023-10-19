@@ -1,6 +1,31 @@
 # DSA, Leetcode in Golang
 
 
+### 100. Balance of Binary Tree
+
+Approach #1: Recursive DFS
+1. Find depth/heigh of left and right sub tree 
+2. Abs diff must greater than 1 return false
+3. Find depth/height
+   1. find the left depth/height
+   2. fine the right depth/height
+   3. return max of (left depth or right depth)+ 1 
+
+
+### 543. Diameter of Binary Tree
+
+Approach #1: Recursive DFS
+1. Its based on finding the depth/height of the binary tree
+2. Diameter of binary tree will depth of left sub-tree + depth of right sub-tree
+3. maxDepth out side of recursive depth function
+4. find depth recursive  by
+   1. find the left depth
+   2. find the right depth
+   3. sum left depth and right depth
+   4. compare with maxDepth and change the maxDepth accordingly //trick
+   5. return depth/heigh max of (left or right) + 1 //trick adding 1 include the current root node
+
+
 ### 104. Maximum Depth of Binary Tree
 
 Approach #1 Recursive DFS

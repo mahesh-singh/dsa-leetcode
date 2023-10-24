@@ -41,6 +41,13 @@ Clasification  - 3:41
 5. `for i=0; i<n; i=i*3` O(log n) base 3
 6. `for i=0; i<n; i=i/2` O(log n) base 2
 
+
+### Recursion
+1. Find the base case 
+2. Find the small input for next call
+3. Logic to do task
+
+
 Watch till 1.11
 
 ### Binary Tree & Binary Search tree

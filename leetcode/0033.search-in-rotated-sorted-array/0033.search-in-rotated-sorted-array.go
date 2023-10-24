@@ -27,7 +27,7 @@ func search(nums []int, target int) int {
 		}
 
 	}
-	if nums[l] == target { // missing edge case 
+	if nums[l] == target { // missing edge case
 		return l
 	} else {
 		return -1

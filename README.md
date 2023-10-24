@@ -1,18 +1,34 @@
 # DSA, Leetcode in Golang
 
 
+
+### Recursive Sorting 
+This is not going to most optimized solution for sorting, but help in understanding the sorting 
+Given a nums array of unsorted, function should return the sorted array
+1. Base case: array with single element will be sorted 
+2. Input reduction: Run the sort function recursive for n-1 length array, before that store nth element 
+3. Actual job: Insert the nth element in n-1 length array which is sorted on step 2
+   1. To insert either can be done via iterative or recursive 
+   2. Insert element function 
+      1. base case: array with 0 element or last element > insert candidate
+         1. insert element 
+      2. Input reduction insert n-1, n
+      3. Add value at the end of array 
+
+-----
+
 ### 572. Subtree of Another Tree
 
 Approach #1: Recursive DFS
 1. if tree and sub-tree is null, return true
 2. if one of the them is null, return false
 3. Use the #100 Same tree function 
-4. if root and sub-root value is equal
-   1. call isSame function
+4. if isSame on root and sub-root is true
+   return true
 5. Else
    1. return isSubTree(root.left, subtree) OR isSubTree(root.left, subtree)  // if one of the true, we are good
    
-
+------
 
 ### 100. Same Tree
 
@@ -22,6 +38,7 @@ Approach #1: Recursive DFS
 3. base case p.root.val == q.root.val
    1. return isSame(left of p & q) && isSame(right of p & q)  //both side need to be true
 
+------
 
 ### 110. Balance of Binary Tree
 
@@ -33,6 +50,7 @@ Approach #1: Recursive DFS
    2. fine the right depth/height
    3. return max of (left depth or right depth)+ 1 
 
+-----
 
 ### 543. Diameter of Binary Tree
 
@@ -47,6 +65,7 @@ Approach #1: Recursive DFS
    4. compare with maxDepth and change the maxDepth accordingly //trick
    5. return depth/heigh max of (left or right) + 1 //trick adding 1 include the current root node
 
+----
 
 ### 104. Maximum Depth of Binary Tree
 
@@ -65,7 +84,7 @@ Approach #2 Iterative BFS
    2. increase the level
 3. return the level
 
-
+----
 Approach #3 Iterative BFS using stack
 1. Use stack, add root
 2. use map to maintain the level, add key as root and value a level =1
@@ -78,6 +97,8 @@ Approach #3 Iterative BFS using stack
    3. check id level > maxLevel, set maxLevel = level
 5. return maxLevel
 
+
+----
 ### 226. Invert Binary Tree
 
 Approach #1
@@ -231,7 +252,7 @@ Mistakes
 
 -----
 
-### 75. Search a 2D Matrix
+### 74. Search a 2D Matrix
 
 m: number of rows
 n: number of column

@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Trie struct {
 	Children   [26]*Trie
@@ -23,6 +25,23 @@ func (this *Trie) Insert(word string) {
 	this.isTerminal = true
 }
 
+func (this *Trie) InsertRecursive(word string) {
+	insertRecursive(this, word, 0)
+}
+
+func insertRecursive(curr *Trie, word string, i int) {
+	if i == len(word) {
+		curr.isTerminal = true
+		return
+	}
+	if curr.Children[word[i]-'a'] == nil {
+		curr.Children[word[i]-'a'] = &Trie{}
+	}
+	curr = curr.Children[word[i]-'a']
+
+	insertRecursive(curr, word, i+1)
+}
+
 func (this *Trie) Search(word string) bool {
 	for _, c := range word {
 		if this.Children[c-'a'] == nil {
@@ -33,6 +52,22 @@ func (this *Trie) Search(word string) bool {
 	return this.isTerminal
 }
 
+func (this *Trie) SearchRecursive(word string) bool {
+	return searchRecursive(this, word, 0)
+}
+
+func searchRecursive(curr *Trie, word string, i int) bool {
+	if i == len(word) {
+		return curr.isTerminal
+	}
+	curr = curr.Children[word[i]-'a']
+	if curr == nil {
+		return false
+	}
+
+	return searchRecursive(curr, word, i+1)
+}
+
 func (this *Trie) StartsWith(prefix string) bool {
 	for _, c := range prefix {
 		if this.Children[c-'a'] == nil {
@@ -41,6 +76,10 @@ func (this *Trie) StartsWith(prefix string) bool {
 		this = this.Children[c-'a']
 	}
 	return true
+}
+
+func (this *Trie) Delete(word string) {
+
 }
 
 func main() {

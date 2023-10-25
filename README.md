@@ -1,5 +1,17 @@
 # DSA, Leetcode in Golang
 
+### 1804 Implement Trie -II
+
+1. Raw implementation will be same as regular trie 
+2. Trie struct will have additional filed name CountWord, CountStartWith
+3. When inserting the word into the trie, update CountStartWith for each character insert
+4. Once each character is added into the trie, update the CountWord
+5. While search, return appropriate count if word pr prefix exist 
+
+
+### 208. Implement Trie (Prefix Tree)
+Refer to DSA/trie   
+
 
 
 ### Recursive Sorting 

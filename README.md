@@ -1,5 +1,17 @@
 # DSA, Leetcode in Golang
 
+### 211. Design Add and Search Words Data Structure
+1. Add word will be standard trie add
+2. Search, need to support `.` as match all 
+   1. For each char in word
+      1. if char is `.`
+         1. Need to search recursive for all all available child nodes for remaining characters from word
+         2. if any of the search found the remaining element return true
+         3. Return false if loop ends without returning the true
+      2. else run standard search
+
+
+
 ### 1804 Implement Trie -II
 
 1. Raw implementation will be same as regular trie 

@@ -14,7 +14,7 @@ func searchMatrix(matrix [][]int, target int) bool {
 		} else if matrix[row][len(matrix[row])-1] < target {
 			top = row + 1
 		} else {
-			// we are on the curren row
+			// we are on the current row
 			break
 		}
 	}

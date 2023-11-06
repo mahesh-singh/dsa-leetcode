@@ -19,6 +19,7 @@ func searchMatrix(matrix [][]int, target int) bool {
 		}
 	}
 
+	//Because target is not in the matrix and that's the only way to know
 	if top > bot { //Missing edge case
 		return false
 	}

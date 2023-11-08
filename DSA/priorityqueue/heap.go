@@ -34,6 +34,11 @@ func main() {
 	heap.Init(h)
 	heap.Push(h, 4)
 	heap.Push(h, 3)
-	fmt.Printf("min value is: %d \n", heap.Pop(h))
 
+	//fmt.Printf("min value is: %d \n", heap.Pop(h))
+	fmt.Printf("Heap : %d \n", (*h))
+	fmt.Printf("Heap : %d \n", heap.Pop(h))
+	fmt.Printf("Heap : %d \n", (*h))
+
+	//fmt.Printf("3rd value is: %d \n", (*h)[2])
 }

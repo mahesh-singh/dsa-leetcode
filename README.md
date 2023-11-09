@@ -2,9 +2,19 @@
 
 ### 215. Kth Largest Element in an Array
 
+
 ### 973. K Closest Points to Origin
+1. Intuition: Need to find closest point, so max heap of distance of length k. After push, if len of heap is greater than k, pop the max. This will make sure heap will have kth smallest distance 
+2. Max heap of points 
+3. Less func should calculate the distance and compare
+4. add points one by one and check the the len of heap
+5. if len of heap is greater then k, pop (which will pop the max distance point so far)
+6. return the  heap  
+
 
 ### 1046. Last Stone Weight
+1. Intuition: max heap, and while len(heap) >1, keep pop two item and push the diff
+
 
 ### 703. Kth Largest Element in a Stream
 1. Intuition: min heap with length k with only contains elements of largest then kth. Pop the kth largest element 

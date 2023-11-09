@@ -86,3 +86,32 @@ Above tree is *not a BST* as 9 is in the left subtree of 8
 
 ```
 Above tree is BST as each node's right sub tree have larger element and left have smaller element 
+
+### Heap
+
+1. Heap will be visually represent via tree
+2. Heap will be stored via array
+
+      100
+      /  \
+     19  36
+     /\   /  \
+   17 3  25   1
+   /\          
+  2  7
+
+  [100, 19, 36, 17, 3,25, 1, 2, 7]
+
+  Above is max heap, where root node represent the highest value in the heap. 
+  Every child will be less then their parent node
+
+
+1. Heap in go require to implement container/heap interface
+2. container/heap have following func which need to implement
+   1. `Len() int` on value receiver
+   2. `Less(i, j int) bool` on value receiver
+   3. `Swap(i, j int)`  on value receiver `i<j` for min heap and `i>j` for max heap
+   4. `Push(x interface{})` on pointer receiver
+   5. `Pop() interface{}` on pointer receiver
+3. heap need to init by `heap.Init()`
+4. Push and pop will be done via `heap.Push` and `heap.Pop` 

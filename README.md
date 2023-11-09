@@ -1,5 +1,44 @@
 # DSA, Leetcode in Golang
 
+### 215. Kth Largest Element in an Array
+
+### 973. K Closest Points to Origin
+
+### 1046. Last Stone Weight
+
+### 703. Kth Largest Element in a Stream
+1. Intuition: min heap with length k with only contains elements of largest then kth. Pop the kth largest element 
+2. Stream require heap for find the min or max element as with every insert of new element, require to pull the min/max on top of the tree
+3. create a type named `intHeap` of `[]int`
+4. implement min heap functions on `intHeap`
+5. Because kth largest element need to find, min heap need to implement of k length
+6. if len(inHeap) is less than k, push to the heap
+7. Else if element is greater than min element, pop, and push
+8. Else ignore  
+
+### Heap in Go
+1. Heap will be visually represent via tree
+2. Heap will be stored via array
+
+      100
+      /  \
+     19  36
+     /\   /  \
+   17 3  25   1
+   /\          
+  2  7
+
+  [100, 19, 36, 17, 3,25, 1, 2, 7]
+3. Heap in go require to implement container/heap interface
+4. container/heap have following func which need to implement
+   1. `Len() int` on value receiver
+   2. `Less(i, j int) bool` on value receiver
+   3. `Swap(i, j int)`  on value receiver
+   4. `Push(x interface{})` on pointer receiver
+   5. `Pop() interface{}` on pointer receiver
+5. heap need to init by `heap.Init()`
+6. Push and pop will be done via `heap.Push` and `heap.Pop` 
+
 ### 211. Design Add and Search Words Data Structure
 1. Add word will be standard trie add
 2. Search, need to support `.` as match all 

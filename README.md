@@ -1,7 +1,22 @@
 # DSA, Leetcode in Golang
 
 ### 215. Kth Largest Element in an Array
-
+1. Intuition #1: Kth largest, means a min heap of len k which contains elements greater then kth. This can be done as same in #703
+2. Intuition #2: Sorting and heap solution will give n*log(n) time complexity. This can be done in n time complexity via quick select
+3. Quick select: to find kth smallest element. 
+   1. Need to find largest k, so update k = len of array - k //*imp*
+   2. Partition: Goal, place random chosen pivot element to its true index
+   3. if k is greater then pivot index, run quick select on left portion of partition else on right partition
+   4. if kth value is equal to pivot, found the kth smallest element
+   5. Partition logic
+      1. take a random pivot and place it at right side of array by swap
+      2. take a variable `pivotLessElementsTailIndex` and set to zero. This variable indicate all the element left to this are less then pivot.
+      3. Loop through the array
+         1. check if current index element is less then pivot, it means this element must be left side of `pivotLessElementsTailIndex`.
+         2. swap current index element with `pivotLessElementsTailIndex` and `pivotLessElementsTailIndex` increment by 1.
+      4. Once loop ends, swap `pivotLessElementsTailIndex` and right most element. This step will place pivot at right index where all the less then pivot are left and greater then are on right
+      5. return the pivot index
+   6. *Imp* Quick select can be implement as a recursive as well as iterative
 
 ### 973. K Closest Points to Origin
 1. Intuition: Need to find closest point, so max heap of distance of length k. After push, if len of heap is greater than k, pop the max. This will make sure heap will have kth smallest distance 

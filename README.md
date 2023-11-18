@@ -4,16 +4,25 @@
 ## 78. Subsets
 
 1. Intuition: Need to find all possible subset (super-set/the power set), backtracking 
-2. Choice : all the numbers in the unique array
-3. Choose : one element at a time (this can be done by in recursive call by current choice index + 1 )
-4. Explore : recursive cal on above choose and next choice
-5. Un-choose : remove the chosen element 
-6. Explore : recursive cal on above un-choose and the next choice
+2. if start index >= len(nums) : add path into result and return
+3. Choice : all the numbers in the unique array
+4. Choose : add one element at a time on path (this can be done by in recursive call by current choice index + 1 )
+5. Explore : recursive cal on above choose and next choice
+6. Un-choose : remove the chosen element from path
+7. Explore : recursive cal for next choice
 
 --------
 ### 39. Combination Sum
-
-
+Need to find all possible combination of given target where numbers can be repetitive
+1. Intuition: Need to find all combination - hence backtracking.
+   1. Same as 78. Subset with once change, instead of choosing new number each time, chose same number until, 
+2. if start index >= len(nums) and target == sum of path: add path into result and return
+3. if index >= len(nums) OR target > sum of path: return, it means that path does't contains the sum
+4. Choice: all the numbers 
+5. Choose: One element until either target == sum of path
+6. Explore: recursive call for same start point
+7. Un-choose: remove the added element from path
+8. Explore: recursive call on next number 
 
 
 

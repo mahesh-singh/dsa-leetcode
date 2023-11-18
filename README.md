@@ -1,5 +1,23 @@
 # DSA, Leetcode in Golang
 
+------
+## 78. Subsets
+
+1. Intuition: Need to find all possible subset (super-set/the power set), backtracking 
+2. Choice : all the numbers in the unique array
+3. Choose : one element at a time (this can be done by in recursive call by current choice index + 1 )
+4. Explore : recursive cal on above choose and next choice
+5. Un-choose : remove the chosen element 
+6. Explore : recursive cal on above un-choose and the next choice
+
+--------
+### 39. Combination Sum
+
+
+
+
+
+----------
 ### 215. Kth Largest Element in an Array
 1. Intuition #1: Kth largest, means a min heap of len k which contains elements greater then kth. This can be done as same in #703
 2. Intuition #2: Sorting and heap solution will give n*log(n) time complexity. This can be done in n time complexity via quick select
@@ -18,6 +36,7 @@
       5. return the pivot index
    6. *Imp* Quick select can be implement as a recursive as well as iterative
 
+-----------
 ### 973. K Closest Points to Origin
 1. Intuition: Need to find closest point, so max heap of distance of length k. After push, if len of heap is greater than k, pop the max. This will make sure heap will have kth smallest distance 
 2. Max heap of points 
@@ -26,10 +45,10 @@
 5. if len of heap is greater then k, pop (which will pop the max distance point so far)
 6. return the  heap  
 
-
+---------
 ### 1046. Last Stone Weight
 1. Intuition: max heap, and while len(heap) >1, keep pop two item and push the diff
-
+ --------
 
 ### 703. Kth Largest Element in a Stream
 1. Intuition: min heap with length k with only contains elements of largest then kth. Pop the kth largest element 
@@ -41,6 +60,7 @@
 7. Else if element is greater than min element, pop, and push
 8. Else ignore  
 
+-----
 ### Heap in Go
 1. Heap will be visually represent via tree
 2. Heap will be stored via array

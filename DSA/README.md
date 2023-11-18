@@ -115,3 +115,16 @@ Above tree is BST as each node's right sub tree have larger element and left hav
    5. `Pop() interface{}` on pointer receiver
 3. heap need to init by `heap.Init()`
 4. Push and pop will be done via `heap.Push` and `heap.Pop` 
+
+
+### BackTracking
+1. Subset, combination, permutation all needs backtracking algorithm
+2. There are two class of problems 
+   1. Combination : Doesn't care about ordering ex. [1,2] and [2,1] are the same 
+   2. Permutation : Care about ordering ex "AB" and "BA" are different letters
+3. Basic intuition: 
+   1. Choice : its all the choice made during the path of a tree 
+   2. Choose : What are going to choose on each node 
+   3. Explore : Explore further based on above chosen 
+   4. Un-choose : Un-choose so that next time, new chose can be made
+4. Basic tricks and types of problem

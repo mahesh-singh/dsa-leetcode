@@ -43,9 +43,16 @@ Clasification  - 3:41
 
 
 ### Recursion
-1. Find the base case 
-2. Find the small input for next call
-3. Logic to do task
+
+1. Choice + decision
+2. Find the base case 
+3. Find the small input for next call
+4. Logic to do task
+5. Normally ans on leaf node
+6. Three type of problem solve by recursion
+   1. DP: (asking about optimal) answer on the root (recursion + memory)
+   2. Backtracking:  (all the combination) answer on path 
+   3. DnC: ?
 
 
 Watch till 1.11
@@ -127,4 +134,36 @@ Above tree is BST as each node's right sub tree have larger element and left hav
    2. Choose : What are going to choose on each node 
    3. Explore : Explore further based on above chosen 
    4. Un-choose : Un-choose so that next time, new chose can be made
-4. Basic tricks and types of problem
+4. Implement via recursion 
+5. Basic tricks and types of problem
+
+https://www.youtube.com/watch?v=zL4mjpYpRmc
+
+
+### Binary search
+https://leetcode.com/explore/learn/card/binary-search/
+
+
+### Graph
+1. Edge
+2. Node/Vertex
+3. Connected Graph
+4. Dis-connected Graph
+5. Directed and undirected graph
+6. Cyclic and Acyclic graph
+7. Storing connected graph
+
+Implementation
+1. Adjacency matrix 
+2. Adjacency list
+
+Graph Traversal
+1. DFS (Recursive & Iterative)
+   1. Adjacency Matrix 
+   2. Adjacency List
+2. BFS: Iterative
+   1. Adjacency Matrix: `DSA\graph\iterative_traversal.go`
+   2. Adjacency List
+
+
+

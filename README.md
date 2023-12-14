@@ -1,7 +1,44 @@
 # DSA, Leetcode in Golang
 
+### 133. Clone Graph
+
+
+-----
+### 200. Number of Islands
+
+
+Intuition: traversal of lands (1s) in DFS of BFS 
+
+Approach #1: DFS
+
+1. Two inner loop to traversal the matrix
+2. If value is 1 call DFS function and increase the count of landCount = landCount+1
+3. call `dfs(i, j)` 
+   1. check for i and j are within boundary of grid along with if `grid[i][j]` is 1 else return (base case for recursive dfs call)
+   2. mark `grid[i][j]` to `0` means visited
+   3. now move to all four direction recursively 
+   4. `dfs(i-1, j)`, `dfs(i, j-1)`, `dfs(i+1, j)`, `dfs(i, j+1)`
+4. return `landCount`
+
+
+Approach #2: BFS
+1. Two inner loop to traversal the matrix
+2. If value is 1, increase landCount by 1
+3. add i and j pair into queue
+4. Mark visited by setting `grid[i][j]=0`
+5. while queue is empty
+   1. Pop from queue
+   2. change i and j to travel in all four direction 
+   3. check if they are in boundary of grid and value is 1
+      1. add into the queue
+      2. Mark visited by setting `grid[i][j]=0`
+6. return land count
+
+
+
+
 ------
-## 78. Subsets
+### 78. Subsets
 
 1. Intuition: Need to find all possible subset (super-set/the power set), backtracking 
 2. if start index >= len(nums) : add path into result and return

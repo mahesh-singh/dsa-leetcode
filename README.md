@@ -2,6 +2,25 @@
 
 ### 133. Clone Graph
 
+Intuition: Use DFS to traversal the nodes, if node already visited in map - copy its neighbor else do the dfs
+
+
+1. take a clone node and map. Nodes which are cloned keep adding into the map
+2. for each neighbor in node
+   1. if neighbor node is already cloned (in map) - append it to clone node
+   2. else, create a clone node, add clone node into map, run the dfs on neighbor node
+
+
+Approach #2 BFS
+1. Take a clone node and map, node which are cloned keep adding into the map
+2. Add visited node into the queue, run unit queue is empty
+   1. pop for queue
+   2. for each neighbor 
+      1. if neighbor is map, add it neighbor of pop node
+      2. else clone it, add into the map, add as a neighbor pf pop node 
+
+
+
 
 -----
 ### 200. Number of Islands
@@ -20,6 +39,10 @@ Approach #1: DFS
    4. `dfs(i-1, j)`, `dfs(i, j-1)`, `dfs(i+1, j)`, `dfs(i, j+1)`
 4. return `landCount`
 
+//modifying grid, pass as a pointer
+//when try to change or get (len or value) dereference `(*grid)[i][j]==1`
+//Pass to recursive function, pass as it is
+//byte use '' instead of ""
 
 Approach #2: BFS
 1. Two inner loop to traversal the matrix

@@ -41,7 +41,7 @@ Approach #1: DFS
 
 //modifying grid, pass as a pointer
 //when try to change or get (len or value) dereference `(*grid)[i][j]==1`
-//Pass to recursive function, pass as it is
+//Pass grid to recursive function, pass as it is
 //byte use '' instead of ""
 
 Approach #2: BFS
@@ -50,7 +50,7 @@ Approach #2: BFS
 3. add i and j pair into queue
 4. Mark visited by setting `grid[i][j]=0`
 5. while queue is empty
-   1. Pop from queue
+   1. dqueue pair i, j from queue
    2. change i and j to travel in all four direction 
    3. check if they are in boundary of grid and value is 1
       1. add into the queue

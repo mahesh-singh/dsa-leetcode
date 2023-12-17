@@ -5,13 +5,17 @@
 Intuition: Use DFS to traversal the nodes, if node already visited in map - copy its neighbor else do the dfs
 
 
-1. take a clone node and map. Nodes which are cloned keep adding into the map
-2. for each neighbor in node
-   1. if neighbor node is already cloned (in map) - append it to clone node
-   2. else, create a clone node, add clone node into map, run the dfs on neighbor node
+1. take a array (check constrain for size). Create first clone node and add it to Val index in array
+2. Call dfs `dfs(node, cloned)`
+   1. for each neighbor of node
+      1. if neighbor node is not in cloned array
+         1. create a clone node of neighbor, put clone node into array with index of Val
+         2. run the dfs on neighbor node `dfs(neighbor, cloned)`
+      2. (no else) get the cloned node from cloned array via curr_node's Val, get cloned neighbor node valve from cloned array via  neighbor node's Val and append to cloned node's neighbor
 
 Mistakes
 //Didn't notice constrains which says `1 <= Node.val <= 100` this reduce the need to creating map, it can done via array of 101 size
+// if cloned node in not in clone array, add into that. There is no need to else statement, adding neighbor for all 
 //Naming mistakes
 // range on slice, first return is index, second is stored value 
 

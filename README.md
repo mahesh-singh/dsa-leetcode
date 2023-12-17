@@ -10,6 +10,11 @@ Intuition: Use DFS to traversal the nodes, if node already visited in map - copy
    1. if neighbor node is already cloned (in map) - append it to clone node
    2. else, create a clone node, add clone node into map, run the dfs on neighbor node
 
+Mistakes
+//Didn't notice constrains which says `1 <= Node.val <= 100` this reduce the need to creating map, it can done via array of 101 size
+//Naming mistakes
+// range on slice, first return is index, second is stored value 
+
 
 Approach #2 BFS
 1. Take a clone node and map, node which are cloned keep adding into the map
@@ -39,6 +44,7 @@ Approach #1: DFS
    4. `dfs(i-1, j)`, `dfs(i, j-1)`, `dfs(i+1, j)`, `dfs(i, j+1)`
 4. return `landCount`
 
+Mistakes
 //modifying grid, pass as a pointer
 //when try to change or get (len or value) dereference `(*grid)[i][j]==1`
 //Pass grid to recursive function, pass as it is

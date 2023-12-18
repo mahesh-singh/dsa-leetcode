@@ -21,12 +21,12 @@ Mistakes
 
 
 Approach #2 BFS
-1. Take a clone node and map, node which are cloned keep adding into the map
+1. Take a clone node and array of 101 len (check constrain), node which are cloned keep adding into the array on Val index
 2. Add visited node into the queue, run unit queue is empty
    1. pop for queue
    2. for each neighbor 
-      1. if neighbor is map, add it neighbor of pop node
-      2. else clone it, add into the map, add as a neighbor pf pop node 
+      1. if neighbor is not in array, add it neighbor into array, adding into queue
+      2. (no else, for all) get the cloned neighbor from array and adding to cloned curr node (find in array by currNode.Val)
 
 
 

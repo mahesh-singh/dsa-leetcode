@@ -1,5 +1,20 @@
 # DSA, Leetcode in Golang
 
+### 695. Max Area of Island
+Intuition: Same a Number of island (#200) , here we have to count the individual land in a single island and return the max count
+
+Approach #1: BFS
+1. for each i and j
+   1. if `grid[i][j]` equal to `1`
+      1. adding i, j pair into the queue, set `grid[i][j]` to zero as a visited, increase the currIsLandArea to 1 
+      2. for `queue` is empty 
+         1. pop the pair, for each offset `[[-1,0], [1,0], [0,-1], [0,1]]` check if new pair in boundary and `1`
+         2.  adding new pair into the queue, set `grid[i][j]` to zero as a visited, increase the currIsLandArea to 1 
+      3. compare the maxArea 
+2. return maxArea   
+
+
+
 ### 133. Clone Graph
 
 Intuition: Use DFS to traversal the nodes, if node already visited in map - copy its neighbor else do the dfs

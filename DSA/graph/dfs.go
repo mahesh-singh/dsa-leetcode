@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package graph
 
 /*
 DFS with adjacency matrix
@@ -80,6 +78,7 @@ func dfs_AdjacencyListHelper(vertex *Vertex, visited map[*Vertex]bool, visit fun
 	}
 }
 
+/*
 func main() {
 	graph := [][]int{
 		//0,1, 2, 3, 4, 5
@@ -126,3 +125,4 @@ func main() {
 	DFS_AdjacencyList(vertices[0], visitFunc)
 	fmt.Println(ret)
 }
+*/

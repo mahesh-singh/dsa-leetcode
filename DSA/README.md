@@ -165,5 +165,19 @@ Graph Traversal
    1. Adjacency Matrix: `DSA\graph\iterative_traversal.go`
    2. Adjacency List
 
+Topological Sort
+1. Applicable on directed acyclic graph
+2. If graph have cycle, it can't be applicable 
+3. It used where one item is dependent on another node. It used to find the ordering based on that.
+4. Order depend upon which node pick first.
+5. Sudo code
+   1. Take a stack to store the order, visited array to track visited node 
+   2. for each node run dfs
+      1. in dfs
+         1. if node is already in visited return 
+         2. Add node in visited
+         3. for each node in adjacency list
+            1. if node is not in visited, run dfs
+         4. add node in stack (means during DFS, it reach to the node which doesn't have any adjacent node; means this node have no dependency)
 
 

@@ -1,5 +1,16 @@
 # DSA, Leetcode in Golang
 
+### 417. Pacific Atlantic Water Flow
+Intuition: Find water flow towards Pacific and Atlantic separately. Overlapping values are going to flow for both the ocean
+
+Approach #1: dfs
+1. create two bool array for visited track (one for pacific and another for atlantic) of array of the same size as heights array
+2. dfs function which take four parameters heights, curr pair, previous pair, visited 
+3. Traverse top row & bottom row, call dfs  by passing pacific and atlantic 
+4. Traverse left row & right row,  call dfs  by passing pacific and atlantic 
+5. find common true from pacific and atlantic array and return
+
+
 ### 695. Max Area of Island
 Intuition: Same a Number of island (#200) , here we have to count the individual land in a single island and return the max count
 

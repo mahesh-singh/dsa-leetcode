@@ -1,5 +1,28 @@
 # DSA, Leetcode in Golang
 
+
+### 207. Course Schedule
+Intuition: 
+1. prerequisites = [[1,0]] represent by 0 must be done first (before) and then 1. 0 -> 1. Build a directed graph in adjacency list where for each node, adjacency list will contains all the nodes which are dependent on the node  
+2. Run the topological sort and try to detect the cycle. This can be done if node is already in visited 
+
+Approach #1 DFS
+1. Build adjacency list
+2. Take visited and visiting bool array with the length of nodes
+3. Visited will hold nodes true for which all the dfs is done
+4. Visiting will hold current dfs path, and if node already added, means found the cycle
+5. for each node, run dfs
+   1. if dfs return false, return false
+6. in dfs
+   1. if node already in visiting, cycle detected, return false 
+   2. if node in visited, return true
+   3. mark visiting true
+   4. for each adjacency node
+      1. if not visited, run dfs
+   5. mark visited true
+
+
+
 ### 417. Pacific Atlantic Water Flow
 Intuition: Find water flow towards Pacific and Atlantic separately. Overlapping values are going to flow for both the ocean
 

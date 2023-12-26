@@ -41,10 +41,11 @@ func dfs(vertex *Vertex, visited *map[int]bool, stack *[]int) {
 func main() {
 	graphAdjacencyArray := [][]int{
 		{1, 2},
-		{4},
+		{4, 6},
 		{3},
 		{},
 		{5},
+		{},
 		{},
 	}
 	vertices := make([]*Vertex, len(graphAdjacencyArray))

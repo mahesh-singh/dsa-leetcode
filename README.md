@@ -1,5 +1,41 @@
 # DSA, Leetcode in Golang
 
+### 323: Number of connected components
+Intuition:
+1. Use DFS 
+2. Union-find. 
+   1. Fist union will the build the array of parents
+   2. For each node, find the parent and return number of parents
+
+Approach #1: Union-Find
+1. Take array parent where , index represent the node and value represent the parent. To start, each value should be node
+2. Take array rank, index represent the node. init with rank `0` for all the nodes
+3. implement find (x)
+   1. if parent[x] != x 
+      1. parent[x] = find(`parent[x]`)
+4. implement union (x, y)
+   1. if parent[x] != parent [y]
+      1. rank[p1] > rank[p2]
+         1. parent[p2] = parent[p1]
+      2. rank[p1] < rank[p2]
+         1. parent[p1] = parent[p2]
+      3. else
+         1. parent[p2] = parent[p1]
+         2. rank[p1]++
+5. for each edge in edges
+   1. run union
+6. for each node, run find and return the unique parents
+https://www.youtube.com/watch?v=gKKATlgNNqM
+
+Approach #2: DFS
+1. Build adjacency list from the graph edges
+2. Take visited bool array to the length of count of edges
+3. for each node 
+   1. if node is not in the visited
+      1. increase the count 
+      2. run dfs
+         1. for each adjacency nodes 
+            1. if adjacency node in not in visited, run dfs
 
 ### 207. Course Schedule
 Intuition: 

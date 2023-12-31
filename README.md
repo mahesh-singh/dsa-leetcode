@@ -1,6 +1,48 @@
 # DSA, Leetcode in Golang
 
-### 323: Number of connected components
+### 269 Alien Dictionary
+Intuition: Need to return word order. Need to build the directed graph of characters and then run the topological order.
+
+Approach #1
+1. To build the directed graph of words 
+   1. compare two words and find the first different char and store in adj list (first char -> second char)
+2. run topological sort on adj list which should also detect the cyclic 
+
+
+### 261: Graph Valid Tree (find it on lint code)
+Intuition:  Graph is a tree if its is acyclic and connected. Connected means visited node == no of node. Acyclic can be check via DFS (BFS) to check visited with previous node or Union-find by tracking parents node without path compression
+
+
+Note: Can't use topological sort as it work for directed graph
+
+Approach #1: Union find
+1. Take array parent. Index represent the node and value represent the parent. Init each node as its self parent
+2. Take count set to no of nodes
+3. implement find x
+   1. if parent[x] != x
+      1. return find parent[x]  // notice, there are not path compression
+   2. else 
+      1. return x
+4. implement union `x`, `y`
+   1. if parent of x != parent of y
+      1. set parent of y = parent of x
+      2. decrease count--
+5. Actual code
+   1. for each edge 
+      1. if find x == find y return false //cycle detected
+      2. union x, y
+6. if count == 1 means only one component return true 
+Approach #2: DFS (or BFS)
+1. Visited bool array, preNode to store previous visited node
+2. Run form any node
+   1. DFS
+      1. if node is in visited and not a pre node of curren node, return false
+      2. for each adj node 
+         1. if adj node in not in visited 
+            1. dfs for adj node with pre as original node  
+3. if dfs runs return true, check for connected by count true in visited and no of nodes 
+
+### 323: Number of connected components (find it on lint code)
 Intuition:
 1. Use DFS 
 2. Union-find. 
@@ -12,7 +54,7 @@ Approach #1: Union-Find
 2. Take array rank, index represent the node. init with rank `0` for all the nodes
 3. implement find (x)
    1. if parent[x] != x 
-      1. parent[x] = find(`parent[x]`)
+      1. parent[x] = find(`parent[x]`) //path compression
 4. implement union (x, y)
    1. if parent[x] != parent [y]
       1. rank[p1] > rank[p2]
@@ -26,6 +68,34 @@ Approach #1: Union-Find
    1. run union
 6. for each node, run find and return the unique parents
 https://www.youtube.com/watch?v=gKKATlgNNqM
+
+
+class Solution:
+    """
+    @param n: the number of vertices
+    @param edges: the edges of undirected graph
+    @return: the number of connected components
+    """
+    def count_components(self, n: int, edges: List[List[int]]) -> int:
+        # write your code here
+        parents = [i for i in range(n)]
+        ranks = [0] * 5
+
+        def find(x): 
+         if parents[x] != x :
+            parents[x] = find(parents[x])
+         return parents[x]
+        
+        def union(x, y):
+         p1 = parents[x]
+         p2 = parents[y]
+         if p1 != p2 :
+            r1 = ranks[x]
+            r2 = ranks[y]
+            if r1 > r2 :
+                 
+
+
 
 Approach #2: DFS
 1. Build adjacency list from the graph edges

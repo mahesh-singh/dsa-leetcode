@@ -10,7 +10,7 @@ Approach #1
 
 
 ### 261: Graph Valid Tree (find it on lint code)
-Intuition:  Graph is a tree if its is acyclic and connected. Connected means visited node == no of node. Acyclic can be check via DFS (BFS) to check visited with previous node or Union-find by tracking parents node without path compression
+Intuition:  Graph is a tree if its is acyclic and connected. Connected means visited node == no of node. Acyclic can be check via DFS (BFS) to check visited with previous node or Union-find by tracking parents node 
 
 
 Note: Can't use topological sort as it work for directed graph
@@ -20,7 +20,7 @@ Approach #1: Union find
 2. Take count set to no of nodes
 3. implement find x
    1. if parent[x] != x
-      1. return find parent[x]  // notice, there are not path compression
+      1. return find parent[x]  
    2. else 
       1. return x
 4. implement union `x`, `y`
@@ -29,18 +29,20 @@ Approach #1: Union find
       2. decrease count--
 5. Actual code
    1. for each edge 
-      1. if find x == find y return false //cycle detected
+      1. if find x == find y return false //`cycle detected because as they have a same parent and if x,y have connection, it will make a cycle`
       2. union x, y
-6. if count == 1 means only one component return true 
+6. return count == 1 //`means only one component return true` 
 Approach #2: DFS (or BFS)
 1. Visited bool array, preNode to store previous visited node
 2. Run form any node
-   1. DFS
-      1. if node is in visited and not a pre node of curren node, return false
-      2. for each adj node 
-         1. if adj node in not in visited 
-            1. dfs for adj node with pre as original node  
-3. if dfs runs return true, check for connected by count true in visited and no of nodes 
+   1. DFS -> bool
+      1. if node is in visited, return false
+      2. Add to visited
+      3. for each adj node 
+         1. if adj node == preNode, continue 
+         2. if dfs is not true return false 
+      4. return true
+3. if not dfs return true, check for connected by count true in visited and no of nodes 
 
 ### 323: Number of connected components (find it on lint code)
 Intuition:
@@ -80,7 +82,7 @@ class Solution:
         # write your code here
         parents = [i for i in range(n)]
         ranks = [0] * 5
-
+        component = 5
         def find(x): 
          if parents[x] != x :
             parents[x] = find(parents[x])
@@ -89,11 +91,20 @@ class Solution:
         def union(x, y):
          p1 = parents[x]
          p2 = parents[y]
-         if p1 != p2 :
+         if p1 != p2:
             r1 = ranks[x]
             r2 = ranks[y]
             if r1 > r2 :
-                 
+               parents[p2] = parents[p1] 
+            else if r2 > r1 
+               parents[p1] = parents[p2]
+            else
+               parents[p2] = parents[p1] 
+               rank[p1]++
+               component--
+         for each edge in edges:
+            union(edge[0], edge[1])
+         return component
 
 
 

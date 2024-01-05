@@ -174,10 +174,15 @@ Topological Sort
    1. Take a stack to store the order, visited array to track visited node 
    2. for each node run dfs
       1. in dfs
-         1. if node is already in visited return 
+         1. if node is already in visited; return 
          2. Add node in visited
          3. for each node in adjacency list
             1. if node is not in visited, run dfs
          4. add node in stack (means during DFS, it reach to the node which doesn't have any adjacent node; means this node have no dependency)
 
-
+Dynamic Programming 
+1. https://www.youtube.com/watch?v=9k31KcQmS_U
+2. https://www.youtube.com/watch?v=8LusJS5-AGo&list=PLrmLmBdmIlpsHaNTPP_jHHDx_os9ItYXr
+3. https://www.topcoder.com/thrive/articles/Dynamic%20Programming:%20From%20Novice%20to%20Advanced
+4. https://www.youtube.com/watch?v=kvyShbFVaY8&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=3
+5. 

@@ -1,13 +1,37 @@
 # DSA, Leetcode in Golang
 
 ### 269 Alien Dictionary
-Intuition: Need to return word order. Need to build the directed graph of characters and then run the topological order.
+Intuition: Need to return word order. 
+1. Lexicographically sorting work based on first different character i.e. `apple`, `aps`; sorting will happen based on `p` and `s` as first two character `ap` is common. 
+2.  Build a adjacency list where key will be characters and adjacency list will be characters followed by key according to Lexicographically sorting. Apply topological sort on graph to get the ordering
 
-Approach #1
-1. To build the directed graph of words 
-   1. compare two words and find the first different char and store in adj list (first char -> second char)
-2. run topological sort on adj list which should also detect the cyclic 
+Approach #1: Topological sort via dfs
+1. map to store the ordering
+2. build the adjacency list
+   1. for i=0 to len(words)-1
+      1. get min length of word[i] and word[i+1]
+      2. if word1 less then word2 and word1[:min-length] = word2[:min-length] return blank // `not a valid ordering`
+      3. for j=0 to min-length
+         1. if char of both the words not match
+            1. char1 will be key and char2 will be added in adjacency list 
+            2. break //`because there is no guarantee that after first non matching char, characters will be in sorted order `
+3. for each char key in adjacency list call dfs
+   1. if not dfs
+      1. return ""
+   2. dfs
+      1. if in visited return true
+      2. if in visiting return false //cycle detected
+      3. set visiting true
+      4. for each adj of current character 
+         1. if not dfs
+            1. return false
+      5. append in visited 
+      6. set visiting false
+      7. return true
+4. return a reverse string join via visited
 
+
+reference: https://www.youtube.com/watch?v=IIgisEKjCKA&t=1054s
 
 ### 261: Graph Valid Tree (find it on lint code)
 Intuition:  Graph is a tree if its is acyclic and connected. Connected means visited node == no of node. Acyclic can be check via DFS (BFS) to check visited with previous node or Union-find by tracking parents node 

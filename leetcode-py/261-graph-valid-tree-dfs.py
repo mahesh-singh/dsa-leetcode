@@ -10,14 +10,31 @@ class Solution:
     """
     def valid_tree(self, n: int, edges: List[List[int]]) -> bool:
         # write your code here
-        visited = [false] * n
+        visited = [False] * n
         adjMap = {i:[] for i in range(n)}
-        for edge range edges:
+        for edge in edges:
             adjMap[edge[0]].append(edge[1])
             adjMap[edge[1]].append(edge[0])
+        
+        def dfs(node, preNode):
+            if visited[node]:
+                return False
 
-        def dfs(, ):
-            if 
+            visited[node] = True
+            for adj in adjMap[node]:
+                if adj == preNode:
+                    continue
+                if not dfs(adj, node): 
+                    return False
 
+            
+            return True
 
+        if not dfs(0, -1):
+            return False
+        
+        return all(visited)
 # [] internal function and self
+
+
+

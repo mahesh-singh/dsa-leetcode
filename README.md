@@ -1,5 +1,52 @@
 # DSA, Leetcode in Golang
 
+## Pattern 
+https://sebinsua.com/algorithmic-bathwater
+https://sebinsua.com/assets/posts/algorithmic-bathwater/algorithmic-bathwater-1.svg
+
+# 210. Course Schedule - II
+Intuition: Same as course schedule (207), instead of returning the true/false, need to return order of the course schedule via first arranging the course directed graph in adjacency list and then applying topological sort.
+
+Approach #1: Topological sort
+1. Convert into adjacency list course -> list of prerequisite
+2. visited for tracking the course schedule, visiting for cycle in the graph
+3. dfs 
+   1. if in visited, return True //already processed
+   2. if in visiting, return False // cycle detected 
+   3. visiting  = True // on the path to find course without prerequisite
+   4. for adj of curr 
+      1. call dfs, if dfs return False, return False
+   5. set visiting to false // path complete and cycle not detected 
+   6. append in visited //
+   7. return True
+4. for all the course 
+   1. call dfs, if return False, return []
+5. return visited
+
+------
+
+
+### 981. Time Based Key-Value Store
+Intuition: Key value store will standard map. Time based values, each key will store list of value along with timestamp. Timestamp are sorted by default which means binary search can apply for target timestamp
+
+Approach #1: Binary search
+1. take a map where key will string and value will be array of array
+2. Set
+   1. if key not exist, add key with empty
+   2. append the value with timestamp for the key
+3. Get
+   1. if key not exist return ""
+   2. if key exist, get the values which is array of value and timestamp
+   3. apply binary search 
+      1. if mid less then eq to target
+         1. set  return value to values[mid].value //`Trick to return the nearest less then equal`
+         2. set l = mid + 1
+      2. else
+         1. set r = mid - 1
+   4. return the return value
+
+-----
+
 ### 269 Alien Dictionary
 Intuition: Need to return word order. 
 1. Lexicographically sorting work based on first different character i.e. `apple`, `aps`; sorting will happen based on `p` and `s` as first two character `ap` is common. 
@@ -32,6 +79,8 @@ Approach #1: Topological sort via dfs
 
 
 reference: https://www.youtube.com/watch?v=IIgisEKjCKA&t=1054s
+
+-----
 
 ### 261: Graph Valid Tree (find it on lint code)
 Intuition:  Graph is a tree if its is acyclic and connected. Connected means visited node == no of node. Acyclic can be check via DFS (BFS) to check visited with previous node or Union-find by tracking parents node 
@@ -67,6 +116,8 @@ Approach #2: DFS (or BFS)
          2. if dfs is not true return false 
       4. return true
 3. if not dfs return true, check for connected by count true in visited and no of nodes 
+
+-----
 
 ### 323: Number of connected components (find it on lint code)
 Intuition:
@@ -142,6 +193,8 @@ Approach #2: DFS
          1. for each adjacency nodes 
             1. if adjacency node in not in visited, run dfs
 
+
+----- 
 ### 207. Course Schedule
 Intuition: 
 1. prerequisites = [[1,0]] represent by 0 must be done first (before) and then 1. 0 -> 1. Build a directed graph in adjacency list where for each node, adjacency list will contains all the nodes which are dependent on the node  
@@ -162,7 +215,7 @@ Approach #1 DFS
       1. if not visited, run dfs
    5. mark visited true
 
-
+----- 
 
 ### 417. Pacific Atlantic Water Flow
 Intuition: Find water flow towards Pacific and Atlantic separately. Overlapping values are going to flow for both the ocean
@@ -174,6 +227,7 @@ Approach #1: dfs
 4. Traverse left row & right row,  call dfs  by passing pacific and atlantic 
 5. find common true from pacific and atlantic array and return
 
+---- 
 
 ### 695. Max Area of Island
 Intuition: Same a Number of island (#200) , here we have to count the individual land in a single island and return the max count
@@ -199,6 +253,7 @@ Approach #2: DFS
       2. compare the maxArea 
 
 
+---- 
 ### 133. Clone Graph
 
 Intuition: Use DFS to traversal the nodes, if node already visited in map - copy its neighbor else do the dfs

@@ -4,6 +4,26 @@
 https://sebinsua.com/algorithmic-bathwater
 https://sebinsua.com/assets/posts/algorithmic-bathwater/algorithmic-bathwater-1.svg
 
+
+# 053. Maximum Subarray
+Intuition: Kadane's Algo
+
+Approach #1: Kadane's Algo
+1. maxSum for storing current max sum so far, sum for storing sum until it become -ve
+2. set maxSum = `nums[0]`, sum=0
+3. For each element in `nums`
+   1. `sum+= nums[i]`
+   2. maxSum = max of maxSum or sum
+   3. if sum less then 0
+      1. set sum to zero again
+4. return maxSum
+
+To return sub array
+1. start index initially set to zero, and reset startIndex to current index when sum is zero in the start of loop
+2. Sent end index to current index when nex maxSum is found 
+
+-----
+
 # 210. Course Schedule - II
 Intuition: Same as course schedule (207), instead of returning the true/false, need to return order of the course schedule via first arranging the course directed graph in adjacency list and then applying topological sort.
 

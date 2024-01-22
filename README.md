@@ -5,6 +5,23 @@ https://sebinsua.com/algorithmic-bathwater
 https://sebinsua.com/assets/posts/algorithmic-bathwater/algorithmic-bathwater-1.svg
 
 
+# 238. Product of Array Except Self
+Intuition: at every element, product to array except self will be the product of all the element before that element and product of all the element after that element.
+
+Approach #1
+1. Take three array prefix, postfix and product 
+2. To calculate prefix
+3. loop through `nums`, for each element i
+   1.   `prefix[i] = nums[i-1] * prefix[i-1]` 
+   2.   for i==0; `prefix[i] = 1 * 1` 
+4. To calculate postfix
+5. loop through `nums` from right to left, for each element i
+   1. `postfix[i] = nums[i+1] * postfix[i+1]`
+   2. for 1==1 `postfix[i]= 1`
+6. to calculate product of array except self 
+7. loop though `nums`, for each element i
+   1.  `product[i]=prefix[i] * postfix[i]`
+
 # 053. Maximum Subarray
 Intuition: Kadane's Algo
 

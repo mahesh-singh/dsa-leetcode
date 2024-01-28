@@ -4,6 +4,27 @@
 https://sebinsua.com/algorithmic-bathwater
 https://sebinsua.com/assets/posts/algorithmic-bathwater/algorithmic-bathwater-1.svg
 
+# 152 Maximum Product Sub-array
+
+Intuition: 
+1. If array can have at most one negative, we can take same approach as #053 Maximum subarray
+2. When there are more then one negative number in sub-array,
+   1. Positive number multiplication with negative number will make it negative
+   2. Negative number multiplication with negative number will make it positive 
+   3. In that case need to tack, calculate and get  min and max both for each element 
+
+
+Approach 
+1. track max, min. Initialize it with 1
+2. track result and init with nums[0]
+3. for each number in array
+   1. store temp  = max * n // `because max will change after calculating the max`
+   2. calculate max via max(max *n, min *n, n)
+   3. calculate min via min(temp * n, min * n, n)
+   4. calculate res  = max(res, max)
+4. return res
+
+
 
 # 238. Product of Array Except Self
 Intuition: at every element, product to array except self will be the product of all the element before that element and product of all the element after that element.
@@ -21,6 +42,8 @@ Approach #1
 6. to calculate product of array except self 
 7. loop though `nums`, for each element i
    1.  `product[i]=prefix[i] * postfix[i]`
+
+---- 
 
 # 053. Maximum Subarray
 Intuition: Kadane's Algo

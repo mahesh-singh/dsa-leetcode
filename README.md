@@ -7,22 +7,36 @@ https://sebinsua.com/assets/posts/algorithmic-bathwater/algorithmic-bathwater-1.
 # 152 Maximum Product Sub-array
 
 Intuition: 
-1. If array can have at most one negative, we can take same approach as #053 Maximum subarray
+1. If array can have at most one negative, we can take same approach as Kadane's Algo in #053 Maximum subarray
 2. When there are more then one negative number in sub-array,
    1. Positive number multiplication with negative number will make it negative
    2. Negative number multiplication with negative number will make it positive 
-   3. In that case need to tack, calculate and get  min and max both for each element 
+3. There are two approach
+   1. First find the max product via kadane's algo form left to right and then max from right to left
+      1. return the max of both
+   2. track min and max 
+
+Approach #1 : Loop from both side in Kadane algo
+1. Loop from left to right 
+   1. find currProduct of  currMax * n
+   2. find max of currProduct and currMax
+   3. if currProduct ==0, rest to 1
+2. Loop from right to left and repeat above steps
+3. compare the max of both the loop and return the max
 
 
-Approach 
+Approach #2 : Track max and min in Kadane algo
 1. track max, min. Initialize it with 1
 2. track result and init with nums[0]
 3. for each number in array
-   1. store temp  = max * n // `because max will change after calculating the max`
+   1. store temp  = max // `because max will change after calculating the max`
    2. calculate max via max(max *n, min *n, n)
    3. calculate min via min(temp * n, min * n, n)
    4. calculate res  = max(res, max)
 4. return res
+
+
+
 
 
 

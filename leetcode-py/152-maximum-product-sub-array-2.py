@@ -10,3 +10,4 @@ class Solution:
             result = max(currMax, result)
         
         return result
+    

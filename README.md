@@ -1,23 +1,32 @@
 # DSA, Leetcode in Golang
 
-## Pattern 
+## Pattern
 https://sebinsua.com/algorithmic-bathwater
 https://sebinsua.com/assets/posts/algorithmic-bathwater/algorithmic-bathwater-1.svg
 
+# 50. Pow(x,n)
+TODO
+
+# 153 Find Min in Rotated Sorted Array
+TODO
+
+# 1046 Last Stone Weight
+TODO
+
 # 152 Maximum Product Sub-array
 
-Intuition: 
+Intuition:
 1. If array can have at most one negative, we can take same approach as Kadane's Algo in #053 Maximum subarray
 2. When there are more then one negative number in sub-array,
    1. Positive number multiplication with negative number will make it negative
-   2. Negative number multiplication with negative number will make it positive 
+   2. Negative number multiplication with negative number will make it positive
 3. There are two approach
    1. First find the max product via kadane's algo form left to right and then max from right to left
       1. return the max of both
-   2. track min and max 
+   2. track min and max
 
 Approach #1 : Loop from both side in Kadane algo
-1. Loop from left to right 
+1. Loop from left to right
    1. find currProduct of  currMax * n
    2. find max of currProduct and currMax
    3. if currProduct ==0, rest to 1
@@ -44,20 +53,20 @@ Approach #2 : Track max and min in Kadane algo
 Intuition: at every element, product to array except self will be the product of all the element before that element and product of all the element after that element.
 
 Approach #1
-1. Take three array prefix, postfix and product 
+1. Take three array prefix, postfix and product
 2. To calculate prefix
 3. loop through `nums`, for each element i
-   1.   `prefix[i] = nums[i-1] * prefix[i-1]` 
-   2.   for i==0; `prefix[i] = 1 * 1` 
+   1.   `prefix[i] = nums[i-1] * prefix[i-1]`
+   2.   for i==0; `prefix[i] = 1 * 1`
 4. To calculate postfix
 5. loop through `nums` from right to left, for each element i
    1. `postfix[i] = nums[i+1] * postfix[i+1]`
    2. for 1==1 `postfix[i]= 1`
-6. to calculate product of array except self 
+6. to calculate product of array except self
 7. loop though `nums`, for each element i
    1.  `product[i]=prefix[i] * postfix[i]`
 
----- 
+----
 
 # 053. Maximum Subarray
 Intuition: Kadane's Algo
@@ -74,7 +83,7 @@ Approach #1: Kadane's Algo
 
 To return sub array
 1. start index initially set to zero, and reset startIndex to current index when sum is zero in the start of loop
-2. Sent end index to current index when nex maxSum is found 
+2. Sent end index to current index when nex maxSum is found
 
 -----
 
@@ -84,16 +93,16 @@ Intuition: Same as course schedule (207), instead of returning the true/false, n
 Approach #1: Topological sort
 1. Convert into adjacency list course -> list of prerequisite
 2. visited for tracking the course schedule, visiting for cycle in the graph
-3. dfs 
+3. dfs
    1. if in visited, return True //already processed
-   2. if in visiting, return False // cycle detected 
+   2. if in visiting, return False // cycle detected
    3. visiting  = True // on the path to find course without prerequisite
-   4. for adj of curr 
+   4. for adj of curr
       1. call dfs, if dfs return False, return False
-   5. set visiting to false // path complete and cycle not detected 
+   5. set visiting to false // path complete and cycle not detected
    6. append in visited //
    7. return True
-4. for all the course 
+4. for all the course
    1. call dfs, if return False, return []
 5. return visited
 
@@ -111,7 +120,7 @@ Approach #1: Binary search
 3. Get
    1. if key not exist return ""
    2. if key exist, get the values which is array of value and timestamp
-   3. apply binary search 
+   3. apply binary search
       1. if mid less then eq to target
          1. set  return value to values[mid].value //`Trick to return the nearest less then equal`
          2. set l = mid + 1
@@ -122,8 +131,8 @@ Approach #1: Binary search
 -----
 
 ### 269 Alien Dictionary
-Intuition: Need to return word order. 
-1. Lexicographically sorting work based on first different character i.e. `apple`, `aps`; sorting will happen based on `p` and `s` as first two character `ap` is common. 
+Intuition: Need to return word order.
+1. Lexicographically sorting work based on first different character i.e. `apple`, `aps`; sorting will happen based on `p` and `s` as first two character `ap` is common.
 2.  Build a adjacency list where key will be characters and adjacency list will be characters followed by key according to Lexicographically sorting. Apply topological sort on graph to get the ordering
 
 Approach #1: Topological sort via dfs
@@ -134,7 +143,7 @@ Approach #1: Topological sort via dfs
       2. if word1 less then word2 and word1[:min-length] = word2[:min-length] return blank // `not a valid ordering`
       3. for j=0 to min-length
          1. if char of both the words not match
-            1. char1 will be key and char2 will be added in adjacency list 
+            1. char1 will be key and char2 will be added in adjacency list
             2. break //`because there is no guarantee that after first non matching char, characters will be in sorted order `
 3. for each char key in adjacency list call dfs
    1. if not dfs
@@ -143,10 +152,10 @@ Approach #1: Topological sort via dfs
       1. if in visited return true
       2. if in visiting return false //cycle detected
       3. set visiting true
-      4. for each adj of current character 
+      4. for each adj of current character
          1. if not dfs
             1. return false
-      5. append in visited 
+      5. append in visited
       6. set visiting false
       7. return true
 4. return a reverse string join via visited
@@ -157,7 +166,7 @@ reference: https://www.youtube.com/watch?v=IIgisEKjCKA&t=1054s
 -----
 
 ### 261: Graph Valid Tree (find it on lint code)
-Intuition:  Graph is a tree if its is acyclic and connected. Connected means visited node == no of node. Acyclic can be check via DFS (BFS) to check visited with previous node or Union-find by tracking parents node 
+Intuition:  Graph is a tree if its is acyclic and connected. Connected means visited node == no of node. Acyclic can be check via DFS (BFS) to check visited with previous node or Union-find by tracking parents node
 
 
 Note: Can't use topological sort as it work for directed graph
@@ -167,36 +176,36 @@ Approach #1: Union find
 2. Take count set to no of nodes
 3. implement find x
    1. if parent[x] != x
-      1. return find parent[x]  
-   2. else 
+      1. return find parent[x]
+   2. else
       1. return x
 4. implement union `x`, `y`
    1. if parent of x != parent of y
       1. set parent of y = parent of x
       2. decrease count--
 5. Actual code
-   1. for each edge 
+   1. for each edge
       1. if find x == find y return false //`cycle detected because as they have a same parent and if x,y have connection, it will make a cycle`
       2. union x, y
-6. return count == 1 //`means only one component return true` 
+6. return count == 1 //`means only one component return true`
 Approach #2: DFS (or BFS)
 1. Visited bool array, preNode to store previous visited node
 2. Run form any node
    1. DFS -> bool
       1. if node is in visited, return false
       2. Add to visited
-      3. for each adj node 
-         1. if adj node == preNode, continue 
-         2. if dfs is not true return false 
+      3. for each adj node
+         1. if adj node == preNode, continue
+         2. if dfs is not true return false
       4. return true
-3. if not dfs return true, check for connected by count true in visited and no of nodes 
+3. if not dfs return true, check for connected by count true in visited and no of nodes
 
 -----
 
 ### 323: Number of connected components (find it on lint code)
 Intuition:
-1. Use DFS 
-2. Union-find. 
+1. Use DFS
+2. Union-find.
    1. Fist union will the build the array of parents
    2. For each node, find the parent and return number of parents
 
@@ -204,7 +213,7 @@ Approach #1: Union-Find
 1. Take array parent where , index represent the node and value represent the parent. To start, each value should be node
 2. Take array rank, index represent the node. init with rank `0` for all the nodes
 3. implement find (x)
-   1. if parent[x] != x 
+   1. if parent[x] != x
       1. parent[x] = find(`parent[x]`) //path compression
 4. implement union (x, y)
    1. if parent[x] != parent [y]
@@ -232,11 +241,11 @@ class Solution:
         parents = [i for i in range(n)]
         ranks = [0] * 5
         component = 5
-        def find(x): 
+        def find(x):
          if parents[x] != x :
             parents[x] = find(parents[x])
          return parents[x]
-        
+
         def union(x, y):
          p1 = parents[x]
          p2 = parents[y]
@@ -244,11 +253,11 @@ class Solution:
             r1 = ranks[x]
             r2 = ranks[y]
             if r1 > r2 :
-               parents[p2] = parents[p1] 
-            else if r2 > r1 
+               parents[p2] = parents[p1]
+            else if r2 > r1
                parents[p1] = parents[p2]
             else
-               parents[p2] = parents[p1] 
+               parents[p2] = parents[p1]
                rank[p1]++
                component--
          for each edge in edges:
@@ -260,19 +269,19 @@ class Solution:
 Approach #2: DFS
 1. Build adjacency list from the graph edges
 2. Take visited bool array to the length of count of edges
-3. for each node 
+3. for each node
    1. if node is not in the visited
-      1. increase the count 
+      1. increase the count
       2. run dfs
-         1. for each adjacency nodes 
+         1. for each adjacency nodes
             1. if adjacency node in not in visited, run dfs
 
 
------ 
+-----
 ### 207. Course Schedule
-Intuition: 
-1. prerequisites = [[1,0]] represent by 0 must be done first (before) and then 1. 0 -> 1. Build a directed graph in adjacency list where for each node, adjacency list will contains all the nodes which are dependent on the node  
-2. Run the topological sort and try to detect the cycle. This can be done if node is already in visited 
+Intuition:
+1. prerequisites = [[1,0]] represent by 0 must be done first (before) and then 1. 0 -> 1. Build a directed graph in adjacency list where for each node, adjacency list will contains all the nodes which are dependent on the node
+2. Run the topological sort and try to detect the cycle. This can be done if node is already in visited
 
 Approach #1 DFS
 1. Build adjacency list
@@ -282,26 +291,26 @@ Approach #1 DFS
 5. for each node, run dfs
    1. if dfs return false, return false
 6. in dfs
-   1. if node already in visiting, cycle detected, return false 
+   1. if node already in visiting, cycle detected, return false
    2. if node in visited, return true
    3. mark visiting true
    4. for each adjacency node
       1. if not visited, run dfs
    5. mark visited true
 
------ 
+-----
 
 ### 417. Pacific Atlantic Water Flow
 Intuition: Find water flow towards Pacific and Atlantic separately. Overlapping values are going to flow for both the ocean
 
 Approach #1: dfs
 1. create two bool array for visited track (one for pacific and another for atlantic) of array of the same size as heights array
-2. dfs function which take four parameters heights, curr pair, previous pair, visited 
-3. Traverse top row & bottom row, call dfs  by passing pacific and atlantic 
-4. Traverse left row & right row,  call dfs  by passing pacific and atlantic 
+2. dfs function which take four parameters heights, curr pair, previous pair, visited
+3. Traverse top row & bottom row, call dfs  by passing pacific and atlantic
+4. Traverse left row & right row,  call dfs  by passing pacific and atlantic
 5. find common true from pacific and atlantic array and return
 
----- 
+----
 
 ### 695. Max Area of Island
 Intuition: Same a Number of island (#200) , here we have to count the individual land in a single island and return the max count
@@ -309,12 +318,12 @@ Intuition: Same a Number of island (#200) , here we have to count the individual
 Approach #1: BFS
 1. for each element of grid  i and j
    1. if `grid[i][j]` equal to `1`
-      1. adding i, j pair into the queue, set `grid[i][j]` to zero as a visited, increase the currIsLandArea to 1 
-      2. for `queue` is empty 
+      1. adding i, j pair into the queue, set `grid[i][j]` to zero as a visited, increase the currIsLandArea to 1
+      2. for `queue` is empty
          1. pop the pair, for each offset `[[-1,0], [1,0], [0,-1], [0,1]]` check if new pair in boundary and `1`
-         2. adding new pair into the queue, set `grid[i][j]` to zero as a visited, increase the currIsLandArea to 1 
-      3. compare the maxArea 
-2. return maxArea   
+         2. adding new pair into the queue, set `grid[i][j]` to zero as a visited, increase the currIsLandArea to 1
+      3. compare the maxArea
+2. return maxArea
 
 Approach #2: DFS
 
@@ -324,10 +333,10 @@ Approach #2: DFS
          1. for each offset `[[-1,0], [1,0], [0,-1], [0,1]]` check if new pair in boundary and `1`
             1. set `grid[i][j]` to zero as a visited, increase the currIsLandArea with recursive dfs return
          2. return currIsLandArea
-      2. compare the maxArea 
+      2. compare the maxArea
 
 
----- 
+----
 ### 133. Clone Graph
 
 Intuition: Use DFS to traversal the nodes, if node already visited in map - copy its neighbor else do the dfs
@@ -343,16 +352,16 @@ Intuition: Use DFS to traversal the nodes, if node already visited in map - copy
 
 Mistakes
 //Didn't notice constrains which says `1 <= Node.val <= 100` this reduce the need to creating map, it can done via array of 101 size
-// if cloned node in not in clone array, add into that. There is no need to else statement, adding neighbor for all 
+// if cloned node in not in clone array, add into that. There is no need to else statement, adding neighbor for all
 //Naming mistakes
-// range on slice, first return is index, second is stored value 
+// range on slice, first return is index, second is stored value
 
 
 Approach #2 BFS
 1. Take a clone node and array of 101 len (check constrain), node which are cloned keep adding into the array on Val index
 2. Add visited node into the queue, run unit queue is empty
    1. pop for queue
-   2. for each neighbor 
+   2. for each neighbor
       1. if neighbor is not in array, add it neighbor into array, adding into queue
       2. (no else, for all) get the cloned neighbor from array and adding to cloned curr node (find in array by currNode.Val)
 
@@ -363,16 +372,16 @@ Approach #2 BFS
 ### 200. Number of Islands
 
 
-Intuition: traversal of lands (1s) in DFS of BFS 
+Intuition: traversal of lands (1s) in DFS of BFS
 
 Approach #1: DFS
 
 1. Two inner loop to traversal the matrix
 2. If value is 1 call DFS function and increase the count of landCount = landCount+1
-3. call `dfs(i, j)` 
+3. call `dfs(i, j)`
    1. check for i and j are within boundary of grid along with if `grid[i][j]` is 1 else return (base case for recursive dfs call)
    2. mark `grid[i][j]` to `0` means visited
-   3. now move to all four direction recursively 
+   3. now move to all four direction recursively
    4. `dfs(i-1, j)`, `dfs(i, j-1)`, `dfs(i+1, j)`, `dfs(i, j+1)`
 4. return `landCount`
 
@@ -389,7 +398,7 @@ Approach #2: BFS
 4. Mark visited by setting `grid[i][j]=0`
 5. while queue is empty
    1. dqueue pair i, j from queue
-   2. change i and j to travel in all four direction 
+   2. change i and j to travel in all four direction
    3. check if they are in boundary of grid and value is 1
       1. add into the queue
       2. Mark visited by setting `grid[i][j]=0`
@@ -401,7 +410,7 @@ Approach #2: BFS
 ------
 ### 78. Subsets
 
-1. Intuition: Need to find all possible subset (super-set/the power set), backtracking 
+1. Intuition: Need to find all possible subset (super-set/the power set), backtracking
 2. if start index >= len(nums) : add path into result and return
 3. Choice : all the numbers in the unique array
 4. Choose : add one element at a time on path (this can be done by in recursive call by current choice index + 1 )
@@ -413,14 +422,14 @@ Approach #2: BFS
 ### 39. Combination Sum
 Need to find all possible combination of given target where numbers can be repetitive
 1. Intuition: Need to find all combination - hence backtracking.
-   1. Same as 78. Subset with once change, instead of choosing new number each time, chose same number until, 
+   1. Same as 78. Subset with once change, instead of choosing new number each time, chose same number until,
 2. if start index >= len(nums) and target == sum of path: add path into result and return
 3. if index >= len(nums) OR target > sum of path: return, it means that path does't contains the sum
-4. Choice: all the numbers 
+4. Choice: all the numbers
 5. Choose: One element until either target == sum of path
 6. Explore: recursive call for same start point
 7. Un-choose: remove the added element from path
-8. Explore: recursive call on next number 
+8. Explore: recursive call on next number
 
 
 
@@ -428,7 +437,7 @@ Need to find all possible combination of given target where numbers can be repet
 ### 215. Kth Largest Element in an Array
 1. Intuition #1: Kth largest, means a min heap of len k which contains elements greater then kth. This can be done as same in #703
 2. Intuition #2: Sorting and heap solution will give n*log(n) time complexity. This can be done in n time complexity via quick select
-3. Quick select: to find kth smallest element. 
+3. Quick select: to find kth smallest element.
    1. Need to find largest k, so update k = len of array - k //*imp*
    2. Partition: Goal, place random chosen pivot element to its true index
    3. if k is greater then pivot index, run quick select on left portion of partition else on right partition
@@ -445,12 +454,12 @@ Need to find all possible combination of given target where numbers can be repet
 
 -----------
 ### 973. K Closest Points to Origin
-1. Intuition: Need to find closest point, so max heap of distance of length k. After push, if len of heap is greater than k, pop the max. This will make sure heap will have kth smallest distance 
-2. Max heap of points 
+1. Intuition: Need to find closest point, so max heap of distance of length k. After push, if len of heap is greater than k, pop the max. This will make sure heap will have kth smallest distance
+2. Max heap of points
 3. Less func should calculate the distance and compare
 4. add points one by one and check the the len of heap
 5. if len of heap is greater then k, pop (which will pop the max distance point so far)
-6. return the  heap  
+6. return the  heap
 
 ---------
 ### 1046. Last Stone Weight
@@ -458,14 +467,14 @@ Need to find all possible combination of given target where numbers can be repet
  --------
 
 ### 703. Kth Largest Element in a Stream
-1. Intuition: min heap with length k with only contains elements of largest then kth. Pop the kth largest element 
+1. Intuition: min heap with length k with only contains elements of largest then kth. Pop the kth largest element
 2. Stream require heap for find the min or max element as with every insert of new element, require to pull the min/max on top of the tree
 3. create a type named `intHeap` of `[]int`
 4. implement min heap functions on `intHeap`
 5. Because kth largest element need to find, min heap need to implement of k length
 6. if len(inHeap) is less than k, push to the heap
 7. Else if element is greater than min element, pop, and push
-8. Else ignore  
+8. Else ignore
 
 -----
 ### Heap in Go
@@ -477,7 +486,7 @@ Need to find all possible combination of given target where numbers can be repet
      19  36
      /\   /  \
    17 3  25   1
-   /\          
+   /\
   2  7
 
   [100, 19, 36, 17, 3,25, 1, 2, 7]
@@ -489,11 +498,11 @@ Need to find all possible combination of given target where numbers can be repet
    4. `Push(x interface{})` on pointer receiver
    5. `Pop() interface{}` on pointer receiver
 5. heap need to init by `heap.Init()`
-6. Push and pop will be done via `heap.Push` and `heap.Pop` 
+6. Push and pop will be done via `heap.Push` and `heap.Pop`
 
 ### 211. Design Add and Search Words Data Structure
 1. Add word will be standard trie add
-2. Search, need to support `.` as match all 
+2. Search, need to support `.` as match all
    1. For each char in word
       1. if char is `.`
          1. Need to search recursive for all all available child nodes for remaining characters from word
@@ -505,30 +514,30 @@ Need to find all possible combination of given target where numbers can be repet
 
 ### 1804 Implement Trie -II
 
-1. Raw implementation will be same as regular trie 
+1. Raw implementation will be same as regular trie
 2. Trie struct will have additional filed name CountWord, CountStartWith
 3. When inserting the word into the trie, update CountStartWith for each character insert
 4. Once each character is added into the trie, update the CountWord
-5. While search, return appropriate count if word pr prefix exist 
+5. While search, return appropriate count if word pr prefix exist
 
 
 ### 208. Implement Trie (Prefix Tree)
-Refer to DSA/trie   
+Refer to DSA/trie
 
 
 
-### Recursive Sorting 
-This is not going to most optimized solution for sorting, but help in understanding the sorting 
+### Recursive Sorting
+This is not going to most optimized solution for sorting, but help in understanding the sorting
 Given a nums array of unsorted, function should return the sorted array
-1. Base case: array with single element will be sorted 
-2. Input reduction: Run the sort function recursive for n-1 length array, before that store nth element 
+1. Base case: array with single element will be sorted
+2. Input reduction: Run the sort function recursive for n-1 length array, before that store nth element
 3. Actual job: Insert the nth element in n-1 length array which is sorted on step 2
-   1. To insert either can be done via iterative or recursive 
-   2. Insert element function 
+   1. To insert either can be done via iterative or recursive
+   2. Insert element function
       1. base case: array with 0 element or last element > insert candidate
-         1. insert element 
+         1. insert element
       2. Input reduction insert n-1, n
-      3. Add value at the end of array 
+      3. Add value at the end of array
 
 -----
 
@@ -537,12 +546,12 @@ Given a nums array of unsorted, function should return the sorted array
 Approach #1: Recursive DFS
 1. if tree and sub-tree is null, return true
 2. if one of the them is null, return false
-3. Use the #100 Same tree function 
+3. Use the #100 Same tree function
 4. if isSame on root and sub-root is true
    return true
 5. Else
    1. return isSubTree(root.left, subtree) OR isSubTree(root.left, subtree)  // if one of the true, we are good
-   
+
 ------
 
 ### 100. Same Tree
@@ -558,12 +567,12 @@ Approach #1: Recursive DFS
 ### 110. Balance of Binary Tree
 
 Approach #1: Recursive DFS
-1. Find depth/heigh of left and right sub tree 
+1. Find depth/heigh of left and right sub tree
 2. Abs diff must greater than 1 return false
 3. Find depth/height
    1. find the left depth/height
    2. fine the right depth/height
-   3. return max of (left depth or right depth)+ 1 
+   3. return max of (left depth or right depth)+ 1
 
 -----
 
@@ -586,16 +595,16 @@ Approach #1: Recursive DFS
 
 Approach #1 Recursive DFS
 1. Base exit case if root is nil, return 0 as a height
-2. Start from root, calculate the heigh of left sub-tree and the right sub-tree 
+2. Start from root, calculate the heigh of left sub-tree and the right sub-tree
 3. take the max of heights and add 1
-4. repeat the process 
+4. repeat the process
 
 Approach #2 Iterative BFS
 
 1. Use queue, add root, sel level 0
 2. Iterative till len(queue) > 0
-   1. Iterative for len of the current queue -  *trick, store len in tmp variable and run loop till the tmp len* 
-      1. deque from top, if left node is not null, add in the queue and same for right node 
+   1. Iterative for len of the current queue -  *trick, store len in tmp variable and run loop till the tmp len*
+      1. deque from top, if left node is not null, add in the queue and same for right node
    2. increase the level
 3. return the level
 
@@ -605,7 +614,7 @@ Approach #3 Iterative BFS using stack
 2. use map to maintain the level, add key as root and value a level =1
 3. take maxLevel = 1
 4. Iterative till len(stack) >0
-   1. pop all the top node from stack 
+   1. pop all the top node from stack
    2. Get the level of the node for map
       1. if pop-node.left != nil add into the stack and map with level+1
       2. if pop-node.right != nil add into the stack and map with level+1
@@ -620,7 +629,7 @@ Approach #1
 1. Check the exit case if root == nil
 2. Store the root's right on the temp
 3. set right = left and left = temp
-4. run above recursive for root.right and root.left 
+4. run above recursive for root.right and root.left
 
 ----
 
@@ -631,14 +640,14 @@ Approach #1
 Approach #1: reverse, delete, reverse
 1. Reverse the lined list
 2. Reach to the node just before that, and use tmp variable to store the next.next node
-3. set node.next to tmp variable 
+3. set node.next to tmp variable
 
-Approach #2: Two pointer 
+Approach #2: Two pointer
 1. Take a dummy node and add list to that (or use the prev pointer, start will null)
 2. First pointer at dummy node, second pointer at n distance further from **head** (not form dummy node) , means n+1 node. means offset between these pointer must be equal to n
 3. Move both the pointers one step at a time
-4. Once second, pointer reach to the null, it means first pointer is just before the node which need to be removed 
-5. remove the node by setting   
+4. Once second, pointer reach to the null, it means first pointer is just before the node which need to be removed
+5. remove the node by setting
 
 Mistake
 1. Not assigning dummy.next to head. Confused with merged two list where dummy list start with dummy.next= null as add item one by one.
@@ -648,7 +657,7 @@ Mistake
 ### 143. Reorder List
 1. Find middle by using slow and fast pointer. Slow.next will be the head of second list
 2. Store Slow.next  and **set slow.next to null** to split the fist and second list
-3. Reverse the second list, **prev pointer become the new head** 
+3. Reverse the second list, **prev pointer become the new head**
 4. merge these two list until second list become null because in case of odd length, second list become shorter
    1. to merge, first store the next node of fist and second in temp
    2. set fist.next to second
@@ -661,17 +670,17 @@ Mistake
 
 Approach #1: Brute force
 1. Use hash table and store address of the node/value as a key
-2. if found again, its cyclic 
+2. if found again, its cyclic
 
 
 Approach #2 : slow and fast pointer
-1. Take a two pointer `slow`,  `fast` and set to list 
+1. Take a two pointer `slow`,  `fast` and set to list
 2. loop through until list == null && slow and fast pointer is null
    1. move `slow` to next list item and `fast` to next of next
    2. compare the `slow` and  `fast`, if equal, return true
-3. return false 
+3. return false
 
-Mistake 
+Mistake
 1. Making mistake by not checking slowPointer.Next != nil && fastPointer.Next != nil && fastPointer.Next.Next != nil
 
 
@@ -681,7 +690,7 @@ Mistake
 
 Approach #1
 1. Note: list is sorted, unequal list
-2. Take a dummy list with {Val:-1, Next: null}. 
+2. Take a dummy list with {Val:-1, Next: null}.
 3. Assign it to tail //trick, this will help in moving tail in the loop
 4. Loop both the list until one of them reach to null
 5. Compare the value and the smaller one should be added in the tail and tail need to move to next
@@ -690,22 +699,22 @@ Approach #1
 
 Mistakes
 1. Not using tail, this make dummy list reach to last node so not sure how to return the new list
-2. `dummy := &ListNode{Val: -1, Next: nil}` 
+2. `dummy := &ListNode{Val: -1, Next: nil}`
 
 -----
 
 ### 206. Reverse Linked List
 
-Approach #1 : iterative 
-1. have three pointers, prev, curr and next 
+Approach #1 : iterative
+1. have three pointers, prev, curr and next
 2. loop through until curr == null // `making mistake of curr.next == null while coding`
    1. set next = curr.next //otherwise you will lose the next ref
    2. set curr.next = prev
    3. set prev = curr
    4. set curr = next
 
-Mistake 
-1. `var prev *ListNode = nil`   
+Mistake
+1. `var prev *ListNode = nil`
 
 ----
 
@@ -717,7 +726,7 @@ Approach #1
 3. add char in map or if already exist, increment the count, increase the maxLength
 4. find the max frequency char from map and apply following formula  `maxlength - maxFrequency <= k` (*it is not same as `maxlength - maxFrequency -k < 0`. It will lead to *)
 5. if `maxlength - maxFrequency <= k` is true, keep repeating above steps
-6. if false, reduce the frequency of s[l], move l = l+1  
+6. if false, reduce the frequency of s[l], move l = l+1
 
 Approach #2
 1. Using binary search
@@ -731,7 +740,7 @@ Approach #1
 1. l & r = 1, maxDiff = 0
 2. for `r < len(prices)`
 3. if `prices[r] < prices[l]`, l need to shift to new index `l=r`
-4. else max of maxDiff and  `prices[r] - prices[l]` 
+4. else max of maxDiff and  `prices[r] - prices[l]`
 5. `r = r+1`
 
 
@@ -743,7 +752,7 @@ Approach #1
 2. map to track chars index, key=char, value=index & maxLength to track the max length
 3. loop `r<len(s)`
    1. if s[r] not exist in map, take max of maxLength and r-l+1
-   2. else (its seen ), and seen index pos is `>=l` (it means seen already outside of current window on the left side)  change the `l` to seen-index +1 
+   2. else (its seen ), and seen index pos is `>=l` (it means seen already outside of current window on the left side)  change the `l` to seen-index +1
    3. update char index to `r`
 
 ----
@@ -754,7 +763,7 @@ Approach #1
 
 1. In rotated sorted array, if split from mid, at least one side will be increasing order. This indicate rotation happen on other side.
 2. find the min element index (while l<r) , this can be done via checking which side is non increasing
-3. Once min element index found, run the binay search for for both soid find the target element 
+3. Once min element index found, run the binay search for for both soid find the target element
 
 Approach #2
 1. Same as above but searching can be happen at the same time
@@ -762,7 +771,7 @@ Approach #2
 3. Once l>r condition break, check the target value in `nums[l]==traget` else return -1
 
 Mistakes
-1. miss the `target` condition 
+1. miss the `target` condition
 2. miss the loop will break and need to check with `nums[l]`
 
 -----
@@ -774,31 +783,31 @@ n: number of column
 
 Approach #1
 
-1. upper bond `i>0, i<m, j>0, j<n` 
+1. upper bond `i>0, i<m, j>0, j<n`
 2. Start with top right `matrix[0][n-1]` (consider it as mid in binary search)
-3. if it is greater then `target`, it can't be in the next row, move to the previous column 
-4. if it is less then `target`, move to next row 
+3. if it is greater then `target`, it can't be in the next row, move to the previous column
+4. if it is less then `target`, move to next row
 5. do this until upper bound reached
 
-Mistake 
+Mistake
 1. missing the case for [[1]],1. condition was `j>0;` but it should be `j>=0`
 
 Approach #2
 
-1. Binary search on rows to find probable row index  
+1. Binary search on rows to find probable row index
 2.  if `target` > mid row last element; change change the top
 3.  if `target` < mid row fist element; change the bottom
-4.  Otherwise you are on the probable row; break the loop  
-5.  if `top > bottom` means, not found. (if value greater-then last element of the 2D array or less-then fist element of the array)  
+4.  Otherwise you are on the probable row; break the loop
+5.  if `top > bottom` means, not found. (if value greater-then last element of the 2D array or less-then fist element of the array)
 6. Binary search on the the elements of the row
 
-Complexity  = log(m) + log(n) 
+Complexity  = log(m) + log(n)
 
 Mistake
-1. Edge case where top become greater then bot and while searching for the candidate row and exiting the loop 
+1. Edge case where top become greater then bot and while searching for the candidate row and exiting the loop
 
 Approach #3
-Alternative to above approach: convert matrix into array and vise versa 
+Alternative to above approach: convert matrix into array and vise versa
 
 A n * m matrix converted into an array: matrix[x][y] : a[x * m + y]
 An array can be converted into n * m matrix: a[x] : matrix[x / m][x % m]
@@ -817,7 +826,7 @@ Mistake
 
 -----
 ## Others
--  Find mid element 
+-  Find mid element
 
 ```
 mid = l + (r-l)/2
@@ -825,11 +834,11 @@ mid = l + (r-l)/2
 
 ----
 
-### Sliding window 
-  - Fixed window : sub array or sub string and find sum or length as a max or min 
-  - Dynamic window : given condition min diff, max diff, sum, length etc, but find the sub array or sub string 
+### Sliding window
+  - Fixed window : sub array or sub string and find sum or length as a max or min
+  - Dynamic window : given condition min diff, max diff, sum, length etc, but find the sub array or sub string
 
 ----
-### Sliding window vs two pointer 
+### Sliding window vs two pointer
 - Two pointer usually compare two values at the two pointers instead of all the element between the pointers
-- Sliding window for sub-array, two pointers a way to process pairs  
+- Sliding window for sub-array, two pointers a way to process pairs

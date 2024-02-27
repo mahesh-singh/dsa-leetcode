@@ -501,6 +501,22 @@ Need to find all possible combination of given target where numbers can be repet
 6. Push and pop will be done via `heap.Push` and `heap.Pop`
 
 ### 211. Design Add and Search Words Data Structure
+
+1. Add word will be standard trie add
+2. Search, need to modify search: 
+   1. for `.` char, recursive search happen for all the children
+   2. dfs curr node and index
+      1. exit recursive when index == len of word
+      2. if word[index] is `.`
+         1. for each node in curr node children
+            1. call dfs for child node and index+1
+               1. return true if above true
+      3. if word[index] is in curr node's children
+         1. return dfs for child node at curr node's children for word[index]
+      4. return false
+   3. call dfs in search for root node and index 0
+
+
 1. Add word will be standard trie add
 2. Search, need to support `.` as match all
    1. For each char in word
@@ -509,6 +525,7 @@ Need to find all possible combination of given target where numbers can be repet
          2. if any of the search found the remaining element return true
          3. Return false if loop ends without returning the true
       2. else run standard search
+   
 
 
 

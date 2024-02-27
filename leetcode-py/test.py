@@ -1,10 +1,16 @@
-import heapq
+class WordDictionary:
+    def __init__(self):
+            self.root = {}
+    def search(self, word: str) -> bool:
+        if word == "me":
+            return True
+        return False
 
 if __name__ == "__main__":
-    heap = []
-    heapq.heappush(heap, 2)
-    heapq.heappush(heap, 3)
-    heapq.heappush(heap, 1)
-    heapq.heappush(heap, 8)
+    obj = WordDictionary()
+    word = "abc"
+    m = {}
+    m['a'] = "a"
 
-    print(heap)
+    print(m['a'])
+    print(m.get('a') != None)

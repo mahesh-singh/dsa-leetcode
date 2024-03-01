@@ -4,6 +4,24 @@
 https://sebinsua.com/algorithmic-bathwater
 https://sebinsua.com/assets/posts/algorithmic-bathwater/algorithmic-bathwater-1.svg
 
+# 763 Partition Labels 
+Intuition: store last occurrence index of the char in map and two pointer to find the break points to get the partitions
+
+Approach:
+1. map to store the last occurrence of the each index in pam
+2. Two variables break point, count and result array
+3. for loop till len of string
+   1. get the index of char from map
+   2. store the max of index and break point //this will help us to find the appropriate break point
+   3. count++ for current partition
+   4. if index is equal to break point
+      1. store count value in result array
+      2. reset the count to count next partition
+4. return the result array
+
+
+-----
+
 # 50. Pow(x,n)
 Intuition: Recursion by multiplying half with half
 

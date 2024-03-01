@@ -5,13 +5,45 @@ https://sebinsua.com/algorithmic-bathwater
 https://sebinsua.com/assets/posts/algorithmic-bathwater/algorithmic-bathwater-1.svg
 
 # 50. Pow(x,n)
-TODO
+Intuition: Recursion by multiplying half with half
+
+Approach:
+1. recursive function
+   1. base case, n=0 return 1, n=1 return x
+   2. get the tmp value by calling recursive function
+   3. result = tmp * tmp
+   4. if n is odd, result * x
+2. call recursive function with x and abs n
+3. if n is -ve, return 1/result
+-------
 
 # 153 Find Min in Rotated Sorted Array
-TODO
+Intuition: Binary search
+
+Approach: 
+1. Binary search, take min as +inf
+   1. binary search
+      1. Update min bases min of min and mid 
+      2. Move left if right sub-array is not in increasing order (i.e. rotation done at other half)
+      3. else move right
+   2. return min of left and min
+   
+-------
 
 # 1046 Last Stone Weight
-TODO
+
+Intuition: Max heap, take first two, if first > second, add the diff in heap again. 
+
+Approach: Max heap
+1. Take a max heap, add all the stone weight into them
+2. While heap is gt 1
+   1. pop first and second stone weight
+   2. if first one > second one
+      1. push the diff into the heap
+3. if heap len is one, return the 0th index value from heap
+4. else return 0
+
+-------------
 
 # 152 Maximum Product Sub-array
 
@@ -45,7 +77,7 @@ Approach #2 : Track max and min in Kadane algo
 4. return res
 
 
-
+-------------
 
 
 

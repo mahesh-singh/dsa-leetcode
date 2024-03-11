@@ -4,15 +4,43 @@
 https://sebinsua.com/algorithmic-bathwater
 https://sebinsua.com/assets/posts/algorithmic-bathwater/algorithmic-bathwater-1.svg
 
+
+
+
+# 2405: Optimal Partition of String
+
+Intuition: map to store the string char, if char already exists in map means with hit a non unique char, increase the count and reset the map
+
+Approach:
+1. Map to track the unique char, count to track the count, set it to 1
+2. for each char
+   1. if char in map, count increment ans reset the map 
+   2. for all, set char in map with True or index
+
+
+# 056 Merge Interval
+Intuition: Sort the intervals on first element. For each interval, if last's[1] is less then curr[0] merge the intervals
+
+Approach:
+
+1. Sort the intervals on first element
+2. for each interval
+   1. if no merge interval in result so far or last interval in result is out of current interval
+      1. add into result
+   2. else merge interval // edge case  - current interval might be within boundary of first interval
+3. return the result  
+
+----
+
 # 763 Partition Labels 
 Intuition: store last occurrence index of the char in map and two pointer to find the break points to get the partitions
 
 Approach:
 1. map to store the last occurrence of the each index in pam
-2. Two variables break point, count and result array
-3. for loop till len of string
-   1. get the index of char from map
-   2. store the max of index and break point //this will help us to find the appropriate break point
+2. Variables break point, count and result array
+3. for loop till the len of the string
+   1. get the last index of char from map
+   2. store the max of index and break point in break point //this will help us to find the appropriate break point
    3. count++ for current partition
    4. if index is equal to break point
       1. store count value in result array

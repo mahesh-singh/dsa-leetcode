@@ -5,8 +5,21 @@ https://sebinsua.com/algorithmic-bathwater
 https://sebinsua.com/assets/posts/algorithmic-bathwater/algorithmic-bathwater-1.svg
 
 
+# 79. Word Search
+Intuition: Explore all possible path to find a matching work hence backtracking
+
+Approach:
+1. dfs i, j, word
+   1. if word len is 0 return True
+   2. if i or j out of boundary or word[0] is neq board[i][j] return false
+   3. store board[i][j] in tmp and set board[i][j] to `#` // so that it can be avoided to revisit
+   4. move all four direction for remaining word (word[1:]) and compute the result
+   5. reset board[i][j] to original word
+   6. return the computed result from all four direction move
+2. call dfs for each row and col of board
 
 
+----
 # 2405: Optimal Partition of String
 
 Intuition: map to store the string char, if char already exists in map means with hit a non unique char, increase the count and reset the map
